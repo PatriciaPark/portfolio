@@ -11,7 +11,7 @@ root.render(
   <React.StrictMode>
     <ThemeProvider>
       <LanguageProvider>
-        <HashRouter basename="/portfolio"> {/* ← 고정값으로 */}
+        <HashRouter>
           <App />
         </HashRouter>
       </LanguageProvider>
