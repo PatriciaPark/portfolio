@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "gh-pages": "^6.3.0"
+  },
+  "homepage": "https://PatriciaPark.github.io/portfolio",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+}
