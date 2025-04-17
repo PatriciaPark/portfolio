@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <ThemeProvider>
       <LanguageProvider>
-        <HashRouter basename={isProduction ? "/portfoilo" : "/"}>
+        <HashRouter basename={isProduction ? "/portfolio" : "/"}>
           <App />
         </HashRouter>
       </LanguageProvider>
