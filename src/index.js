@@ -6,14 +6,12 @@ import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { HashRouter } from "react-router-dom";
 
-const isProduction = process.env.NODE_ENV === "production";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
       <LanguageProvider>
-        <HashRouter basename={isProduction ? "/portfolio" : "/"}>
+        <HashRouter basename="/portfolio"> {/* ← 고정값으로 */}
           <App />
         </HashRouter>
       </LanguageProvider>
