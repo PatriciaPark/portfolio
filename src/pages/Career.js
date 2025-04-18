@@ -2,6 +2,14 @@ import { useLanguage } from "../context/LanguageContext";
 
 const careerTimeline = [
   {
+    company: "Self-Employed (Canada & Korea)",
+    period: "2024 – 2025",
+    description: {
+      en: "Running a solo business focused on web and mobile development.",
+      ko: "웹 및 모바일 개발 중심의 1인 사업을 운영 및 웹사이트와 2D 게임을 직접 설계, 개발, 배포."
+    }
+  },
+  {
     company: "Redcap Tour (Seoul, Korea)",
     period: "2023 – 2024",
     description: {
@@ -18,11 +26,11 @@ const careerTimeline = [
     }
   },
   {
-    company: "Freelance Projects",
+    company: "Freelance Projects (Taiwan & Korea)",
     period: "2020 – 2021",
     description: {
-      en: "Completed projects for Line Bank, Lotte Mart, Doosan Infracore.",
-      ko: "Line Bank, Lotte Mart, Doosan Infracore 프로젝트 수행."
+      en: "Completed projects for Line Bank, Lotte Mart, Doosan Infracore, Tribons.",
+      ko: "라인뱅크 타이완, 롯데마트, 두산 인프라코어, 트라이본즈 프로젝트 수행."
     }
   },
   {
@@ -63,8 +71,8 @@ export default function Career() {
         {careerTimeline.map((job, index) => (
           <div key={index} className="border-l-4 border-gray-400 pl-4">
             <h2 className="text-xl font-semibold">{job.company}</h2>
-            <p className="text-sm text-gray-500 mb-1">{job.period}</p>
-            <p className="text-gray-700">{job.description[language]}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{job.period}</p>
+            <p className="text-gray-700 dark:text-gray-200">{job.description[language]}</p>
           </div>
         ))}
       </div>

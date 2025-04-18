@@ -6,9 +6,12 @@ export default function LanguageToggle() {
   return (
     <button
       onClick={toggleLanguage}
-      className="text-sm border px-3 py-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+      className="text-sm border px-3 py-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition flex items-center"
     >
-      {language === "en" ? "🇰🇷 한국어" : "🇺🇸 English"}
+      {language === "en" ? "🇰🇷" : "🇺🇸"}
+      <span className="hidden sm:inline ml-2">
+        {language === "en" ? "한국어" : "English"}
+      </span>
     </button>
   );
 }

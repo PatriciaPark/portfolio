@@ -6,7 +6,7 @@ export default function Home() {
   const { language } = useLanguage();
 
   return (
-    <main className="relative min-h-screen flex flex-col items-center justify-start bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 overflow-hidden pt-20">
+    <main className="relative min-h-screen flex flex-col items-center justify-start bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 overflow-hidden">
       <ParticlesBackground />
 
       {/* 상단 타이틀 */}
@@ -19,7 +19,7 @@ export default function Home() {
         <p className="text-xl glow-text text-gray-700 dark:text-gray-300">
           {language === "en"
             ? "Passionate Developer & Creative Thinker"
-            : "열정적인 개발자, 창의적인 사고를 가진 인재"}
+            : "영어·중국어·일본어 가능한 7년차 풀스택 개발자"}
         </p>
       </div>
 
