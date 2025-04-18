@@ -57,7 +57,7 @@ export default function Career() {
   return (
     <main className="min-h-screen bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 p-6">
       <h1 className="text-4xl font-bold text-center mb-10">
-        {language === "en" ? "Career Timeline" : "경력 타임라인"}
+        {language === "en" ? "Career Timeline" : "경력 사항"}
       </h1>
       <div className="max-w-4xl mx-auto space-y-6">
         {careerTimeline.map((job, index) => (

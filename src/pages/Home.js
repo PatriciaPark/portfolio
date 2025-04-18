@@ -1,19 +1,32 @@
 import { useLanguage } from "../context/LanguageContext";
 import ParticlesBackground from "../components/ParticlesBackground";
+import BrickBreaker from "../games/BrickBreaker";
 
 export default function Home() {
   const { language } = useLanguage();
 
   return (
-    <main className="relative min-h-screen flex items-center justify-center bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 overflow-hidden">
+    <main className="relative min-h-screen flex flex-col items-center justify-start bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 overflow-hidden pt-20">
       <ParticlesBackground />
-      <div className="text-center p-6 z-10">
-        <h1 className="text-5xl font-bold mb-4 glow-text">Youngjee Park</h1>
+
+      {/* 상단 타이틀 */}
+      <div className="text-center mb-12 z-10">
+        <h1 className="text-5xl font-bold mb-4 glow-text">
+          {language === "en"
+            ? "YoungJee Park"
+            : "박 영 지"}
+        </h1>
         <p className="text-xl glow-text text-gray-700 dark:text-gray-300">
           {language === "en"
             ? "Passionate Developer & Creative Thinker"
             : "열정적인 개발자, 창의적인 사고를 가진 인재"}
         </p>
+      </div>
+
+      {/* 게임 영역 */}
+      <div className="text-center z-10">
+        <h2 className="text-3xl font-bold mb-4 text-rose-400">🧱Brick Breaker🧱</h2>
+        <BrickBreaker />
       </div>
 
       <style>
@@ -33,5 +46,6 @@ export default function Home() {
         `}
       </style>
     </main>
+
   );
 }
