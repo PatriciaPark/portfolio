@@ -157,16 +157,15 @@ export default function BrickBreaker() {
         const centerX = canvasRef.current.width / 2;
         const centerY = canvasRef.current.height / 2;
 
-        ctx.font = "24px Arial";
+        ctx.font = "24px 'Press Start 2P'";
         ctx.fillStyle = "#ffffff";
         ctx.textAlign = "center";
         ctx.fillText(message, centerX, centerY - 20);
 
         // 버튼 클릭 메시지
-        ctx.font = "18px Arial";
+        ctx.font = "18px 'Press Start 2P'";
         ctx.fillStyle = "#818cf8";
-        ctx.fillText("Tap to Restart", centerX, centerY + 10);
-        ctx.fillText("🔄", centerX, centerY + 40);
+        ctx.fillText("Tap or Press R to Restart", centerX, centerY + 20);
     };
 
     // 공과 벽돌 충돌 감지
@@ -200,7 +199,7 @@ export default function BrickBreaker() {
     const handleRestart = () => {
         // GA 리스타트 추적
         if (window.gtag) {
-            window.gtag('event', 'game_restart', {
+            window.gtag('event', 'BB_game_restart', {
                 event_category: 'Game',
                 event_label: 'BrickBreaker'
             });
@@ -242,13 +241,13 @@ export default function BrickBreaker() {
             if (gameClear) {
                 // GA 게임 클리어 추적
                 if (window.gtag) {
-                    window.gtag('event', 'game_clear', {
+                    window.gtag('event', 'BB_game_clear', {
                         event_category: 'Game',
                         event_label: 'BrickBreaker'
                     });
                 }
 
-                // 클리어 메시지지
+                // 클리어 메시지
                 drawEndMessage(ctx, "🎉 CLEAR!!");
                 cancelAnimationFrame(animationRef.current);
                 return;
@@ -366,6 +365,7 @@ export default function BrickBreaker() {
 
     return (
         <div className="mt-8 flex flex-col items-center">
+            <h2 className="font-press font-bold mb-4 text-rose-400">🧱Brick Breaker🧱</h2>
             <canvas
                 ref={canvasRef}
                 width={canvasSize.width}

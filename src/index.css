@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /* index.css 또는 global.css에 추가 */
+body {
+    font-family: 'Pretendard Variable', sans-serif;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }

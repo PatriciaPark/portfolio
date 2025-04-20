@@ -11,7 +11,7 @@ const projects = [
       ko: "고객 및 매출 데이터를 효율적으로 관리하고 분석할 수 있는 웹 기반 통합 플랫폼. 실시간 목표 관리와 반응형 디자인 적용."
     },
     role: "Full-Stack Developer (Solo)",
-    tech: ["Python(Django)", "HTML/CSS", "MySQL", "AWS", "Chart.js", "JavaScript","Bootstrap"],
+    tech: ["Python(Django)", "HTML/CSS", "MySQL", "AWS", "Chart.js", "JavaScript", "Bootstrap"],
     link: "https://drive.google.com/file/d/17HyJsUKMF6pSV6tyLRBnb6fZEq32TdOs/view?usp=drive_link"
   },
   {
@@ -55,6 +55,8 @@ const projects = [
   }
 ];
 
+const colors = ["text-rose-400", "text-lime-400", "text-amber-400", "text-indigo-400"];
+
 export default function Projects() {
   const { language } = useLanguage();
 
@@ -67,25 +69,38 @@ export default function Projects() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="border rounded-2xl shadow-md p-6 hover:shadow-lg transition"
+            className="rounded-xl shadow-md bg-white dark:bg-zinc-900 hover:shadow-lg transition flex flex-col justify-between overflow-hidden"
           >
-            <h2 className="text-2xl font-semibold mb-2">{project.title[language]}</h2>
-            <p className="mb-2 text-gray-600 dark:text-gray-300">{project.description[language]}</p>
-            <p className="mb-1 text-sm text-gray-500 italic dark:text-gray-400">{project.role}</p>
-            <p className="mb-2 text-sm text-gray-700 dark:text-gray-200">
-              Tech Stack: {project.tech.join(", ")}
-            </p>
+            <div className="p-6">
+              <h2 className="text-xl font-bold">{project.title[language]}</h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{project.role}</p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300">{project.description[language]}</p>
+
+              <hr className="my-4 border-gray-200 dark:border-gray-700" />
+
+              <p className="text-sm font-semibold text-gray-600 dark:text-gray-300">Tech Stack</p>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {project.tech.map((tech, idx) => (
+                  <span key={idx} className={`px-3 py-1 rounded-full bg-gray-800 text-xs ${colors[idx % colors.length]}`}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
             {project.link && (
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-400 underline text-sm"
+                className="bg-gray-800 text-white text-sm py-3 px-4 rounded-b-xl flex items-center justify-between cursor-pointer hover:bg-gray-700 transition"
               >
-                {language === "en" ? "View More" : "더보기"}
+                <span>{language === "en" ? "View More" : "더보기"}</span>
+                <span>➔</span>
               </a>
             )}
           </div>
+
         ))}
       </div>
     </main>

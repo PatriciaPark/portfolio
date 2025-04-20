@@ -1,6 +1,7 @@
 import { useLanguage } from "../context/LanguageContext";
 import ParticlesBackground from "../components/ParticlesBackground";
 import BrickBreaker from "../games/BrickBreaker";
+import BrickGirlSD from "../games/BrickGirlSD";
 
 export default function Home() {
   const { language } = useLanguage();
@@ -25,8 +26,7 @@ export default function Home() {
 
       {/* 게임 영역 */}
       <div className="text-center z-10">
-        <h2 className="text-3xl font-bold mb-4 text-rose-400">🧱Brick Breaker🧱</h2>
-        <BrickBreaker />
+        <BrickGirlSD />
       </div>
 
       <style>

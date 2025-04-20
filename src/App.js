@@ -1,8 +1,9 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
-import Projects from "./pages/Projects";
 import Career from "./pages/Career";
 import Contact from "./pages/Contact";
+import Projects from "./pages/Projects";
+import ScrollToTop from "./components/ScrollToTop";
 import ThemeToggle from "./components/ThemeToggle";
 import LanguageToggle from "./components/LanguageToggle";
 
@@ -23,6 +24,7 @@ export default function App() {
 
       {/* 공통 컨텐츠 영역 (상단 네비바 여백 포함) */}
       <div className="pt-28 px-4 sm:px-6">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
@@ -30,6 +32,10 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
+      <footer className="w-full py-6 mt-12 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
+        <p>© {new Date().getFullYear()} YoungJee Park. All rights reserved.</p>
+        <p className="mt-1">Built with React & TailwindCSS | Hosted on GitHub Pages</p>
+      </footer>
     </div>
   );
 }

@@ -26,27 +26,40 @@ export default function About() {
           </p>
 
 
-          <h2 className="text-xl font-semibold mb-2 text-rose-400">Contact</h2>
-          <ul className="list-disc list-inside">
-            <ul className="list-disc list-inside space-y-1">
-            <li>
-                <a href="mailto:pyjee8@gmail.com" className="text-lime-400 hover:underline">
-                  Email: pyjee8@gmail.com
+          <div className="bg-gray-800 shadow-lg rounded-xl p-6 w-full max-w-md mx-auto border border-gray-200 dark:border-gray-700">
+            <h2 className="text-xl font-bold mb-4 text-rose-400 text-center">Contact</h2>
+            <ul className="space-y-2 text-sm text-left">
+              <li>
+                <a
+                  href="mailto:pyjee8@gmail.com"
+                  className="text-lime-400 hover:underline break-words"
+                >
+                  ✉️ pyjee8@gmail.com
                 </a>
               </li>
               <li>
-                <a href="https://github.com/PatriciaPark" className="text-amber-400 hover:underline" target="_blank" rel="noopener noreferrer">
-                  GitHub: github.com/PatriciaPark
+                <a
+                  href="https://github.com/PatriciaPark"
+                  className="text-amber-400 hover:underline break-words"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  💻 github.com/PatriciaPark
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/pyjee8/" className="text-indigo-400 hover:underline" target="_blank" rel="noopener noreferrer">
-                  LinkedIn: linkedin.com/in/pyjee8
+                <a
+                  href="https://www.linkedin.com/in/pyjee8/"
+                  className="text-indigo-400 hover:underline break-words"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🔗 linkedin.com/in/pyjee8
                 </a>
               </li>
             </ul>
+          </div>
 
-          </ul>
         </>
       ) : (
         <>
@@ -73,27 +86,39 @@ export default function About() {
             제 역량이 도움이 될 수 있는 기회가 있다면, 언제든 편하게 연락 주시기 바랍니다.
           </p>
 
-          <h2 className="text-xl font-semibold mb-2 text-rose-400">연락처</h2>
-          <ul className="list-disc list-inside">
-            <ul className="list-disc list-inside space-y-1">
+          <div className="bg-gray-800 shadow-lg rounded-xl p-6 w-full max-w-md mx-auto border border-gray-200 dark:border-gray-700">
+            <h2 className="text-xl font-bold mb-4 text-rose-400 text-center">연 락 처</h2>
+            <ul className="space-y-2 text-sm text-left">
               <li>
-                <a href="mailto:pyjee8@gmail.com" className="text-lime-400 hover:underline">
-                  Email: pyjee8@gmail.com
+                <a
+                  href="mailto:pyjee8@gmail.com"
+                  className="text-lime-400 hover:underline break-words"
+                >
+                  ✉️ pyjee8@gmail.com
                 </a>
               </li>
               <li>
-                <a href="https://github.com/PatriciaPark" className="text-amber-400 hover:underline" target="_blank" rel="noopener noreferrer">
-                  GitHub: github.com/PatriciaPark
+                <a
+                  href="https://github.com/PatriciaPark"
+                  className="text-amber-400 hover:underline break-words"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  💻 github.com/PatriciaPark
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/pyjee8/" className="text-indigo-400 hover:underline" target="_blank" rel="noopener noreferrer">
-                  LinkedIn: linkedin.com/in/pyjee8
+                <a
+                  href="https://www.linkedin.com/in/pyjee8/"
+                  className="text-indigo-400 hover:underline break-words"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🔗 linkedin.com/in/pyjee8
                 </a>
               </li>
             </ul>
-
-          </ul>
+          </div>
         </>
       )}
     </div>
