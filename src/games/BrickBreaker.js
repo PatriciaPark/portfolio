@@ -157,13 +157,13 @@ export default function BrickBreaker() {
         const centerX = canvasRef.current.width / 2;
         const centerY = canvasRef.current.height / 2;
 
-        ctx.font = "24px 'Press Start 2P'";
+        ctx.font = "16px 'Press Start 2P'";
         ctx.fillStyle = "#ffffff";
         ctx.textAlign = "center";
         ctx.fillText(message, centerX, centerY - 20);
 
         // 버튼 클릭 메시지
-        ctx.font = "18px 'Press Start 2P'";
+        ctx.font = "13px 'Press Start 2P'";
         ctx.fillStyle = "#818cf8";
         ctx.fillText("Tap or Press R to Restart", centerX, centerY + 20);
     };

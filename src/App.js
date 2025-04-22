@@ -3,6 +3,10 @@ import Home from "./pages/Home";
 import Career from "./pages/Career";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
+import About from "./pages/About";
+import BB from './games/BrickBreaker';
+import BSD from './games/BrickGirlSD';
+import BRT from './games/BrickGirlRT';
 import ScrollToTop from "./components/ScrollToTop";
 import ThemeToggle from "./components/ThemeToggle";
 import LanguageToggle from "./components/LanguageToggle";
@@ -16,7 +20,7 @@ export default function App() {
           <Link className="hover:underline" to="/">Home</Link>
           <Link className="hover:underline" to="/projects">Projects</Link>
           <Link className="hover:underline" to="/career">Career</Link>
-          <Link className="hover:underline" to="/contact">About</Link>
+          <Link className="hover:underline" to="/about">About</Link>
           <ThemeToggle />
           <LanguageToggle />
         </div>
@@ -27,9 +31,13 @@ export default function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
           <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/bb" element={<BB />} />
+          <Route path="/bsd" element={<BSD />} />
+          <Route path="/brt" element={<BRT />} />
         </Routes>
       </div>
       <footer className="w-full py-6 mt-12 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">

@@ -1,6 +1,6 @@
 import { useLanguage } from "../context/LanguageContext";
 
-export default function About() {
+export default function Contact() {
   const { language } = useLanguage();
 
   return (

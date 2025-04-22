@@ -1,4 +1,5 @@
 import { useLanguage } from "../context/LanguageContext";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 
 const careerTimeline = [
   {
@@ -63,19 +64,23 @@ export default function Career() {
   const { language } = useLanguage();
 
   return (
-    <main className="min-h-screen bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 p-6">
-      <h1 className="text-4xl font-bold text-center mb-10">
-        {language === "en" ? "Career Timeline" : "경력 사항"}
-      </h1>
-      <div className="max-w-4xl mx-auto space-y-6">
-        {careerTimeline.map((job, index) => (
-          <div key={index} className="border-l-4 border-gray-400 pl-4">
-            <h2 className="text-xl font-semibold">{job.company}</h2>
-            <p className="text-gray-700 dark:text-gray-200">{job.description[language]}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{job.period}</p>
-          </div>
-        ))}
-      </div>
-    </main>
+    <ParallaxProvider>
+      <main className="min-h-screen bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 p-6">
+        <h1 className="text-4xl font-bold text-center mb-10">
+          {language === "en" ? "Career Timeline" : "경력 사항"}
+        </h1>
+        <div className="max-w-4xl mx-auto space-y-6">
+          {careerTimeline.map((job, index) => (
+            <Parallax key={index} speed={10}>
+              <div className="border-l-4 border-gray-400 pl-4">
+                <h2 className="text-xl font-semibold">{job.company}</h2>
+                <p className="text-gray-700 dark:text-gray-200">{job.description[language]}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{job.period}</p>
+              </div>
+            </Parallax>
+          ))}
+        </div>
+      </main>
+    </ParallaxProvider>
   );
 }
