@@ -120,9 +120,9 @@ export default function MindMapPage() {
     const baseCircleClass =
         "absolute rounded-full text-white text-center flex items-center justify-center transition-all duration-300 focus:outline-none shadow-md hover:shadow-lg dark:shadow-white/10";
 
-    // 그림자 강조 클래스        
+    // 글씨 및 그림자 강조 클래스 : tailwind.config.js
+    const emphasizedRing = "ring-2 ring-white/20 dark:ring-white/70 animate-pulseGlow";
     const emphasizedShadow = "shadow-[0_8px_10px_rgba(0,0,0,0.5)] dark:shadow-[0_8px_24px_rgba(255,255,255,0.5)] dark:drop-shadow-whiteGlow";
-    const emphasizedRing = "ring-2 ring-white/20 dark:ring-white/70";
 
     // 방사형 레이아웃 계산 함수
     const getRadialLayout = (count, radius = 140) => {
@@ -211,6 +211,6 @@ export default function MindMapPage() {
                         );
                     })}
             </AnimatePresence>
-        </div>
+        </div >
     );
 }

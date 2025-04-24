@@ -10,6 +10,26 @@ module.exports = {
       },
       dropShadow: {
         whiteGlow: '0 8px 16px rgba(255,255,255,0.2)',
+      },
+      keyframes: {
+        glow: {
+          '0%, 100%': { boxShadow: '0 0 0px rgba(255,255,255,0)' },
+          '50%': { boxShadow: '0 0 32px rgba(255,255,255,0.7)' },
+        },
+        pulseGlow: {
+          '0%, 100%': {
+            transform: 'scale(1)',
+            boxShadow: '0 0 0 rgba(255,255,255,0)'
+          },
+          '50%': {
+            transform: 'scale(1.05)',
+            boxShadow: '0 0 28px rgba(0,255,255,0.5)'
+          }
+        }
+      },
+      animation: {
+        glow: 'glow 2s ease-in-out infinite',
+        pulseGlow: 'pulseGlow 2.4s ease-in-out infinite'
       }
     },
   },
