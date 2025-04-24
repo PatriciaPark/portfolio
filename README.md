@@ -1,37 +1,55 @@
-# Portfolio Website
+# 🌌 My Dev Universe – Personal Portfolio
+
+Welcome to my interactive portfolio — where code meets creativity!  
+Explore my journey, projects, pixel-art games, and more.
+
 An interactive and responsive personal portfolio website showcasing my development journey, projects, and a fun mini-game built with React.
 
-🛠️ Tech Stack
-    Category | Stack
-    Frontend | React v18+, Tailwind CSS v3+
-    Routing | react-router-dom v6+
-    Deployment | GitHub Pages (gh-pages package)
-    Game Logic | HTML Canvas API (<canvas>) + React hooks
-    State Mgmt | useContext, useState, useRef, useEffect
-    Dark Mode | Tailwind's dark: utility + custom ThemeContext
-    i18n | Manual language toggle (EN/KO) via LanguageContext
+---
 
-🚀 Features
-    🎨 Fully responsive layout (Mobile / Tablet / Desktop)
-    🌙 Light/Dark theme toggle with emoji UI
-    🌐 Language toggle (English / 한국어)
-    🧱 Mini Brick Breaker game with:
-        - Mobile touch control
-        - Particle background
-        - Game over / clear screen
-        - Difficulty increases with speed
-    📄 About Me, Projects, Career pages with multilingual support
-    📦 Deployable via GitHub Pages (npm run deploy)
+## 🛠️ Tech Stack Overview
+```bash
+| Category         | Stack                                                    |
+|------------------|----------------------------------------------------------|
+| **Frontend**     | React v18+, Tailwind CSS v3+                             |
+| **Routing**      | React Router DOM v6+                                     |
+| **State Mgmt.**  | `useState`, `useEffect`, `useRef`, `useContext`          |
+| **Deployment**   | GitHub Pages (via `gh-pages` package)                    |
+| **Game Logic**   | HTML Canvas API + React Hooks                            |
+| **Dark Mode**    | Tailwind's `dark:` utility + custom `ThemeContext`       |
+| **i18n**         | Manual language toggle (EN/KO) using `LanguageContext`   |
+```
+---
 
-📦 Installation & Dev
-    # install dependencies
-    npm install
+## 🚀 Features
+- ✅ **Fully Responsive** – Optimized for Mobile / Tablet / Desktop
+- 🌙 **Dark & Light Theme Toggle** – With emoji UI ✨
+- 🌐 **Language Toggle (EN / 한국어)**
+- 🎮 **Mini Games** – Built with React + Canvas
+  - Brick Breaker, Runner, and Shooter prototypes
+  - Mobile touch support
+  - Particle backgrounds
+  - Game Over / Clear Screens
+  - Difficulty scaling
+- 💡 **Mind Map Page** – Animated interactive map about me
+- 📄 **About Me, Projects, Lab (실험실)** – All with multilingual support
+- 🔗 **Contact Section** – GitHub / LinkedIn / Email (Styled as a digital card)
+- 📦 **Easy Deployment** – `npm run deploy` to GitHub Pages
 
-    # run locally
-    npm start
+---
 
-    # build and deploy to GitHub Pages
-    npm run deploy
+## 📁 Structure
+```bash
+src/ │ 
+     ├── assets/ # images, fonts, etc. 
+     ├── components/ # shared UI components 
+     ├── context/ # ThemeContext, LanguageContext 
+     ├── games/ # mini games (Canvas + React) 
+     ├── pages/ # About, Projects, Career, MindMap, Lab 
+     ├── styles/ # Tailwind config + global styles 
+     └── App.js # main router
+```
+---
 
-🖥️ Live Demo
+## 🖥️ Live Demo
     🔗 https://patriciapark.github.io/portfolio
