@@ -371,8 +371,11 @@ export default function BrickBreaker() {
                 width={canvasSize.width}
                 height={canvasSize.height}
                 className="bg-black rounded shadow-md w-full max-w-none touch-none"
-                style={{ width: '100%', height: 'auto', display: 'block' }}
+                style={{ width: '100%', maxWidth: "480px", display: 'block' }}
             />
+            <p className="text-xs text-center mt-4 text-gray-500 dark:text-gray-400 font-press">
+                ⬅ LEFT • RIGHT ➡ 
+            </p>
         </div>
     );
 }

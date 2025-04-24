@@ -111,7 +111,7 @@ export default function About() {
       {/* Contact section */}
       <div className="bg-gray-800 shadow-lg rounded-xl p-6 w-full max-w-md mx-auto border border-gray-200 dark:border-gray-700 mt-12">
         <h2 className="text-xl font-bold mb-4 text-rose-400 text-center">
-          {language === "en" ? "Contact : More about me" : "연 락 처"}
+          {language === "en" ? "✦ Find out more about me ✦" : "✦ Contect · More about me ✦"}
         </h2>
         <ul className="space-y-2 text-sm text-left">
           <li>

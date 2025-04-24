@@ -68,8 +68,8 @@ const projects = [
   },  
   {
     title: {
-      en: "IFRS Accounting System",
-      ko: "IFRS 회계 시스템"
+      en: "Line Bank IFRS Accounting System",
+      ko: "라인뱅크 IFRS 회계 시스템"
     },
     description: {
       en: "Developed accounting module for lease standard transition. Used Oracle procedures and Git-based workflow.",
@@ -81,8 +81,8 @@ const projects = [
   },
   {
     title: {
-      en: "Air Ticket Admin Platform",
-      ko: "항공권 어드민 플랫폼"
+      en: "eBay Korea Air Ticket Admin Platform",
+      ko: "이베이코리아 항공권 어드민 플랫폼"
     },
     description: {
       en: "Developed admin interface for air ticket reservation and payment with role-based access.",
@@ -95,7 +95,7 @@ const projects = [
   {
     title: {
       en: "Lotte Mart M-Coupon App",
-      ko: "롯데마트 모바일 쿠폰앱"
+      ko: "롯데마트 M쿠폰 앱 리뉴얼얼"
     },
     description: {
       en: "Implemented payment system API integration and backend maintenance for mobile coupon app.",
@@ -107,12 +107,12 @@ const projects = [
   },
   {
     title: {
-      en: "Equipment & Parts Management System",
-      ko: "설비 및 부품 관리 시스템"
+      en: "Doosan Infracore Equipment & Parts Management System",
+      ko: "두산인프라코어 LOS 실행 Transaction 프로젝트"
     },
     description: {
       en: "Built internal equipment/parts tracking system using Java and Vue.js.",
-      ko: "Java와 Vue.js 기반의 내부 설비 및 부품 이력 관리 시스템 구축."
+      ko: "장비/부품 관리 페이지 신규 개발 & 기존 페이지 유지보수 및 메뉴 추가 개발."
     },
     role: "Full-Stack Developer",
     tech: ["Java", "Vue.js", "MSSQL", "JavaScript", "HTML/CSS", "Git"],

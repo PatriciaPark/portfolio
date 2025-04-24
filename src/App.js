@@ -1,9 +1,12 @@
 import { Routes, Route, Link } from "react-router-dom";
+import { useLanguage } from "./context/LanguageContext";
 import Home from "./pages/Home";
+import Lab from "./pages/Lab"
+import About from "./pages/About";
 import Career from "./pages/Career";
+import MindMap from "./pages/MindMap";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
-import About from "./pages/About";
 import BB from './games/BrickBreaker';
 import BSD from './games/BrickGirlSD';
 import BRT from './games/BrickGirlRT';
@@ -12,15 +15,17 @@ import ThemeToggle from "./components/ThemeToggle";
 import LanguageToggle from "./components/LanguageToggle";
 
 export default function App() {
+  const { language } = useLanguage();
+
   return (
     <div className="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 min-h-screen">
       {/* 네비게이션 바 */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-gray-900 shadow-md py-4 px-2 sm:px-4 overflow-x-auto">
         <div className="min-w-full flex justify-center items-center space-x-4 sm:space-x-6 text-base sm:text-lg md:text-xl">
-          <Link className="hover:underline" to="/">Home</Link>
-          <Link className="hover:underline" to="/projects">Projects</Link>
-          <Link className="hover:underline" to="/career">Career</Link>
-          <Link className="hover:underline" to="/about">About</Link>
+          <Link className="hover:underline" to="/">{language === "en" ? "Home" : "홈"}</Link>
+          <Link className="hover:underline" to="/projects">{language === "en" ? "Projects" : "프로젝트"}</Link>
+          <Link className="hover:underline" to="/about">{language === "en" ? "About" : "소개"}</Link>
+          <Link className="hover:underline" to="/lab">{language === "en" ? "Lab" : "실험실"}</Link>
           <ThemeToggle />
           <LanguageToggle />
         </div>
@@ -31,10 +36,12 @@ export default function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/lab" element={<Lab />} />
+          <Route path="/about" element={<About />} />
           <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/mindmap" element={<MindMap />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<About />} />
           <Route path="/bb" element={<BB />} />
           <Route path="/bsd" element={<BSD />} />
           <Route path="/brt" element={<BRT />} />
