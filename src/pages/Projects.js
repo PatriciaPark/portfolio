@@ -3,6 +3,19 @@ import { useLanguage } from "../context/LanguageContext";
 const projects = [
   {
     title: {
+      en: "NeoOrder Lite - Order Management System",
+      ko: "NeoOrder Lite - 주문 관리 시스템"
+    },
+    description: {
+      en: "A lightweight Java web application simulating an order management system with RESTful APIs, status transitions, charts, and multi-language support. Deployed on Render for portfolio demos and API testing.",
+      ko: "RESTful API, 상태 변경, 차트, 다국어 지원 기능을 갖춘 간소화된 주문 관리 시스템. Render 클라우드에 배포되어 포트폴리오 시연 및 API 테스트용으로 제작."
+    },
+    role: "Full-Stack Developer (Solo)",
+    tech: ["Java", "Spring Boot", "Spring Web", "Spring Data JPA", "H2 DB", "Maven", "HTML", "JavaScript", "Chart.js", "Swagger UI", "Render"],
+    link: "https://neoorder-lite.onrender.com/"
+  },
+  {
+    title: {
       en: "B2B Data Management System",
       ko: "B2B 데이터 관리 시스템"
     },
