@@ -35,8 +35,8 @@ export default function About() {
         non-developers alike.
       </>,
       <>
-        I’ve been a <strong>full-time employee</strong>, a <strong>freelancer</strong>, a
-        <strong>mentor</strong>, and a <strong>solo creator</strong>. From somewhere in the middle of
+        I’ve been a <strong>full-time employee</strong>, a <strong>freelancer</strong>,
+        a <strong>mentor</strong>, and a <strong>solo creator</strong>. From somewhere in the middle of
         this long journey, my son has been by my side, and now we live together in Canada. I still
         deeply love what I do, but I also enjoy writing essays, creating pixel-art games, and
         imagining new worlds. My path has never been a straight line, but I believe that’s what has

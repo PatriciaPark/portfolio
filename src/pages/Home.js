@@ -25,7 +25,7 @@ export default function Home() {
             : "7년 차 풀스택 개발자 ✦ 4개 국어로 소통하는 크리에이터"}
         </p>
 
-        <div className="relative w-full h-[500px] overflow-hidden">
+        <div className="relative w-full h-[80vh] overflow-hidden">
           <MindMapPage />
         </div>
       </div>
