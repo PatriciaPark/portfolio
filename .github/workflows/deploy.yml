@@ -31,7 +31,7 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Upload build output
+      - name: Upload static site to Pages
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./build
