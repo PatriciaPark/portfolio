@@ -238,44 +238,45 @@ const tabData = {
         word: "배",
         pron: "bae",
         meanings: [
-        { label: "fruit",    ko: "배(과일)",   eng: "pear" },
-        { label: "vessel",   ko: "배(배)",     eng: "boat" },
-        { label: "stomach",  ko: "배(위)",     eng: "stomach" }
+        { label: "fruit",    ko: "배(배가 크고 달다)",  eng: "pear" },
+        { label: "vessel",   ko: "배(배가 침몰했다)",   eng: "boat" },
+        { label: "stomach",  ko: "배(배가 아프다)",     eng: "stomach" },
+        { label: "times",    ko: "배(돈이 두 배 많다)", eng: "times" }
         ]
     },
     {
         word: "눈",
         pron: "nun",
         meanings: [
-        { label: "eye", ko: "눈(눈)", eng: "eye" },
-        { label: "snow",ko: "눈(눈)", eng: "snow" }
+        { label: "eye", ko: "눈(눈에 밟히다)", eng: "eye" },
+        { label: "snow",ko: "눈(눈이 내리다)", eng: "snow" }
         ]
     },
     {
         word: "말",
         pron: "mal",
         meanings: [
-        { label: "horse",  ko: "말(말)",   eng: "horse" },
-        { label: "speech", ko: "말(말)",   eng: "speech" },
-        { label: "end",    ko: "말(끝)",   eng: "end" }
+        { label: "horse",  ko: "말(말을 타다)", eng: "horse" },
+        { label: "speech", ko: "말(말을 하다)", eng: "speech" },
+        { label: "end",    ko: "말(이달 말)",   eng: "end" }
         ]
     },
     {
         word: "차",
         pron: "cha",
         meanings: [
-        { label: "tea",     ko: "차(차)",     eng: "tea" },
-        { label: "car",     ko: "차(자동차)", eng: "car" },
-        { label: "difference", ko: "차(차)", eng: "difference" }
+        { label: "tea",       ko: "차(차를 마시다)",         eng: "tea" },
+        { label: "car",       ko: "차(차가 밀리다)",         eng: "car" },
+        { label: "difference",ko: "차(두 수의 차를 구하시오)", eng: "difference" }
         ]
     },
     {
         word: "가지",
         pron: "gaji",
         meanings: [
-        { label: "eggplant",   ko: "가지(채소)",       eng: "eggplant" },
-        { label: "branch",     ko: "가지(나뭇가지)",   eng: "branch" },
-        { label: "kind/type",  ko: "가지(종류)",       eng: "kind/type" }
+        { label: "eggplant",   ko: "가지(가지 볶음을 만들다)",       eng: "eggplant" },
+        { label: "branch",     ko: "가지(가지를 함부로 꺾지 마시오)", eng: "branch" },
+        { label: "kind/type",  ko: "가지(여러가지 경우의 수가 있다)", eng: "kind/type" }
         ]
     }
   ]
