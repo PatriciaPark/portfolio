@@ -3,19 +3,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
 
 // 고정된 탭 key 목록
-const tabKeys = ["miniGames", "brickGirl", "novel"];
+const tabKeys = ["miniGames", "brickGirl", "novel", "basicKorean"];
 
 // 다국어 탭 라벨
 const tabLabels = {
     en: {
         miniGames: "Mini Games",
         brickGirl: "Brick Girl",
-        novel: "Novel"
+        novel: "Novel",
+        basicKorean: "Basic Korean"
     },
     ko: {
         miniGames: "미니게임",
         brickGirl: "브릭걸",
-        novel: "소설"
+        novel: "소설",
+        basicKorean: "기본 한국어"
     }
 };
 
@@ -70,6 +72,17 @@ const tabContent = {
             },
             status: { en: "Coming Soon", ko: "준비중" },
             link: ""
+        }
+    ],
+    basicKorean: [
+        {
+            title: { en: "Let's learn Basic Korean😉", ko: "기본 한국어를 배워봅시다😉" },
+            description: {
+                en: "Master essential Korean expressions for everyday situations—greetings, simple questions, and polite/informal speech.",
+                ko: "일상에서 꼭 필요한 한국어 표현을 배우세요—인사, 간단한 질문, 존댓말과 반말을 포함합니다."
+            },
+            status: { en: "Playable", ko: "플레이가능" },
+            link: "/portfolio#/korean"
         }
     ]
 };

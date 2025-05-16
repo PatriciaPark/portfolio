@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Lab from "./pages/Lab"
 import About from "./pages/About";
 import Career from "./pages/Career";
+import Korean from "./pages/Korean";
 import MindMap from "./pages/MindMap";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="/lab" element={<Lab />} />
           <Route path="/about" element={<About />} />
           <Route path="/career" element={<Career />} />
+          <Route path="/korean" element={<Korean />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/mindmap" element={<MindMap />} />
           <Route path="/projects" element={<Projects />} />

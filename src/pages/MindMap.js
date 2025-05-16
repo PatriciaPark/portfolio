@@ -99,12 +99,12 @@ export default function MindMapPage() {
 
     // 중앙 좌표 기준
     const mePosition = {
-        x: window.innerWidth / 2 - 55,
+        x: window.innerWidth / 2 - 70,
         y: window.innerHeight / 2 - 150
     };
 
     const baseCenter = {
-        x: window.innerWidth / 2 - 40,
+        x: window.innerWidth / 2 - 55,
         y: window.innerHeight / 2 - 130
     };
 

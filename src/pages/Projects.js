@@ -12,7 +12,7 @@ const projects = [
     },
     role: "Full-Stack Developer (Solo)",
     tech: ["Java", "Spring Boot", "Spring Web", "Spring Data JPA", "H2 DB", "Maven", "HTML", "JavaScript", "Chart.js", "Swagger UI", "Render"],
-    link: "https://neoorder-lite.onrender.com/"
+    link: "https://github.com/PatriciaPark/neoorder-lite"
   },
   {
     title: {

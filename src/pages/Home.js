@@ -1,6 +1,6 @@
 import { useLanguage } from "../context/LanguageContext";
-import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 import ParticlesBackground from "../components/ParticlesBackground";
 import MindMapPage from "./MindMap";
 import BrickBreaker from "../games/BrickBreaker";
@@ -15,7 +15,7 @@ export default function Home() {
       <ParticlesBackground />
 
       {/* 상단 타이틀 */}
-      <div className="relative text-center mb-12 z-10">
+      <div className="relative w-full text-center mb-12 z-10">
         <motion.h1 className="text-5xl font-extrabold mb-4 text-cyan-300 glow-text tracking-tight">
           {language === "en" ? "Code · Create · Connect" : "생각을 구현하고 · 이야기를 코딩하다"}
         </motion.h1>
