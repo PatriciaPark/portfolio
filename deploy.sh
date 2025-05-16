@@ -3,6 +3,9 @@
 echo "📦 Building project..."
 npm run build
 
+echo "📂 Saving current directory path..."
+ORIGIN_DIR=$(pwd)
+
 echo "🌍 Switching to gh-pages branch..."
 git switch gh-pages || git checkout -b gh-pages
 
@@ -10,7 +13,7 @@ echo "🧹 Cleaning old files..."
 rm -rf *
 
 echo "📂 Copying build output..."
-cp -r ../build/* .
+cp -r "$ORIGIN_DIR/build/"* .
 
 echo "📝 Committing changes..."
 git add .
