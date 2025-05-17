@@ -315,9 +315,9 @@ export default function KoreanContentPage() {
             <table className="w-full table-auto border-separate border-spacing-1 table-glow">
               <thead>
                 <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
-                  <th className="px-3 py-2 text-sm">English</th>
-                  <th className="px-3 py-2 text-sm">Formal</th>
-                  <th className="px-3 py-2 text-sm">Informal</th>
+                  <th className="px-3 py-2 text-lg">English</th>
+                  <th className="px-3 py-2 text-lg">Formal</th>
+                  <th className="px-3 py-2 text-lg">Informal</th>
                 </tr>
               </thead>
               <tbody>
@@ -327,9 +327,9 @@ export default function KoreanContentPage() {
                                            hover:from-cyan-200 hover:to-indigo-200
                                            dark:hover:from-cyan-800 dark:hover:to-indigo-800
                                            transition-colors">
-                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.en}</td>
-                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.formal}</td>
-                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.informal}</td>
+                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.en}</td>
+                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.formal}</td>
+                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.informal}</td>
                   </tr>
                 ))}
               </tbody>
@@ -343,9 +343,9 @@ export default function KoreanContentPage() {
             <table className="w-full table-auto border-separate border-spacing-1 table-glow">
               <thead>
                 <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
-                  <th className="px-3 py-2 text-sm">English</th>
-                  <th className="px-3 py-2 text-sm">Reading</th>
-                  <th className="px-3 py-2 text-sm">Counting</th>
+                  <th className="px-3 py-2 text-lg">English</th>
+                  <th className="px-3 py-2 text-lg">Reading</th>
+                  <th className="px-3 py-2 text-lg">Counting</th>
                 </tr>
               </thead>
               <tbody>
@@ -355,9 +355,9 @@ export default function KoreanContentPage() {
                                            hover:from-cyan-200 hover:to-indigo-200
                                            dark:hover:from-cyan-800 dark:hover:to-indigo-800
                                            transition-colors">
-                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.en}</td>
-                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.reading}</td>
-                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.counting}</td>
+                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.en}</td>
+                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.reading}</td>
+                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.counting}</td>
                   </tr>
                 ))}
               </tbody>
@@ -372,9 +372,9 @@ export default function KoreanContentPage() {
             <table className="w-full table-auto border-separate border-spacing-1 table-glow">
             <thead>
                 <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
-                  <th className="px-3 py-2 text-sm">English</th>
-                  <th className="px-3 py-2 text-sm">Korean</th>
-                  <th className="px-3 py-2 text-sm">Description</th>
+                  <th className="px-3 py-2 text-lg">English</th>
+                  <th className="px-3 py-2 text-lg">Korean</th>
+                  <th className="px-3 py-2 text-lg">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -387,9 +387,9 @@ export default function KoreanContentPage() {
                                dark:hover:from-cyan-800 dark:hover:to-indigo-800
                                transition-colors"
                 >
-                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.en}</td>
-                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.ko}</td>
-                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.description}</td>
+                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.en}</td>
+                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.ko}</td>
+                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.description}</td>
                 </tr>
                 ))}
             </tbody>
@@ -403,10 +403,10 @@ export default function KoreanContentPage() {
             <table className="w-full table-auto border-separate border-spacing-1 table-glow">
             <thead>
                 <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
-                  <th className="px-3 py-2 text-sm">Word</th>
-                  <th className="px-3 py-2 text-sm">Pron.</th>
-                  <th className="px-3 py-2 text-sm">English Meaning</th>
-                  <th className="px-3 py-2 text-sm">Korean Meaning</th>
+                  <th className="px-3 py-2 text-lg">Word</th>
+                  <th className="px-3 py-2 text-lg">Pron.</th>
+                  <th className="px-3 py-2 text-lg">English Meaning</th>
+                  <th className="px-3 py-2 text-lg">Korean Meaning</th>
                 </tr>
             </thead>
             <tbody>
@@ -424,20 +424,20 @@ export default function KoreanContentPage() {
                         <>
                         <td
                             rowSpan={item.meanings.length}
-                            className="px-3 py-2 text-xs text-gray-800 dark:text-cyan-200 align-center text-center"
+                            className="px-3 py-2 text-base text-gray-800 dark:text-cyan-200 align-center text-center"
                         >
                             {item.word}
                         </td>
                         <td
                             rowSpan={item.meanings.length}
-                            className="px-3 py-2 text-xs text-gray-800 dark:text-cyan-200 align-center text-center"
+                            className="px-3 py-2 text-base text-gray-800 dark:text-cyan-200 align-center text-center"
                         >
                             {item.pron}
                         </td>
                         </>
                     )}
-                        <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{m.eng}</td>
-                        <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{m.ko}</td>
+                        <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{m.eng}</td>
+                        <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{m.ko}</td>
                     </tr>
                 ))
                 )}
