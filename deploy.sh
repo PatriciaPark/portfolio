@@ -1,57 +1,28 @@
 #!/bin/bash
 set -e
 
-# 0. Stash any work in progress
-STASHED=false
-if ! git diff --quiet || ! git diff --cached --quiet; then
-  echo "💾 Stashing tracked changes..."
-  git stash push -m "deploy-temp"   # *no* -u, so node_modules stays OUT of the stash
-  STASHED=true
+# 1) 워크트리로 gh-pages 브랜치 준비 (최초 1회)
+if [ ! -d "../gh-pages" ]; then
+  git worktree add ../gh-pages gh-pages
 fi
 
-# 1. Only from main
-if [[ $(git branch --show-current) != "main" ]]; then
-  echo "⚠️  Please run from main branch."
-  $STASHED && git stash pop
-  exit 1
-fi
-
-# 2. Build
+# 2) 프로젝트 빌드
 echo "📦 Building..."
 npm run build
 
-# 3. Back up build
-TEMP_DIR=$(mktemp -d)
-cp -r build/* "$TEMP_DIR"
+# 3) gh-pages 워크트리 디렉토리에 복사
+echo "📂 Copying build to gh-pages worktree..."
+rm -rf ../gh-pages/*
+cp -r build/* ../gh-pages/
 
-# 4. Switch to gh-pages (force any dirty worktree)
-git switch gh-pages --force || git checkout -b gh-pages
-
-# 5. Clean out only tracked files
-git rm -rf .
-
-# 6. Clean untracked but leave ignored (no -x)
-git clean -fd
-
-# 7. Copy in new build
-cp -r "$TEMP_DIR"/* .
-rm -rf "$TEMP_DIR"
-
-# 8. Commit & push
+# 4) gh-pages 워크트리로 이동하여 커밋 & 푸시
+pushd ../gh-pages
 git add .
-# Only commit if there’s actually something changed
-if ! git diff --cached --quiet ; then
+# 변경사항이 있을 때만 커밋
+if ! git diff --cached --quiet; then
   git commit -m "🚀 deploy latest build"
 fi
 git push origin gh-pages --force
+popd
 
-# 9. Always switch back to main, even if something above died
-git switch -f main || true
-
-# 10. Restore your WIP if we stashed it
-if [ "$STASHED" = true ]; then
-  echo "💾 Restoring your tracked changes..."
-  git stash pop
-fi
-
-echo "✅ Deployed! Your site is live at https://patriciapark.github.io/portfolio/"
+echo "✅ Deployment complete! Site updated at https://patriciapark.github.io/portfolio/"
