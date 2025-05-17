@@ -1,34 +1,32 @@
 #!/bin/bash
+set -e
 
-# ✅ 1. main 브랜치에서만 실행
+# 1. main 브랜치 체크
 if [[ $(git branch --show-current) != "main" ]]; then
-  echo "⚠️ STOP: Must run this script from main branch."
+  echo "⚠️ STOP: Run this script from main branch."
   exit 1
 fi
 
 echo "📦 Building project..."
 npm run build
 
-# ✅ 2. 임시 디렉토리에 빌드 백업
-echo "📁 Copying build/ to temp folder..."
+# 2. build 백업
 TEMP_DIR=$(mktemp -d)
 cp -r build/* "$TEMP_DIR"
 
-echo "🌍 Switching to gh-pages branch..."
+# 3. gh-pages로 전환 & 파일 정리
 git switch gh-pages || git checkout -b gh-pages
+git rm -rf .  # 트래킹된 파일만 삭제
 
-echo "🧹 Cleaning old files..."
-rm -rf *
-
-# ✅ 3. 백업한 빌드 복사
-echo "📂 Copying from temp to current folder..."
+# 4. 백업한 빌드 복사
 cp -r "$TEMP_DIR"/* .
+rm -rf "$TEMP_DIR"
 
-# ✅ 4. Git 작업
-echo "📝 Committing changes..."
+# 5. 커밋 & 푸시 (변경 있을 때만)
 git add .
-git commit -m "🚀 deploy latest build"
+git diff --exit-code || git commit -m "🚀 deploy latest build"
 git push origin gh-pages --force
 
-echo "✅ Deployment complete! Check your site at:"
-echo "https://patriciapark.github.io/portfolio/"
+# 6. main으로 복귀
+git switch main
+echo "✅ Deployment complete! https://patriciapark.github.io/portfolio/"
