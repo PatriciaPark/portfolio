@@ -1,53 +1,56 @@
 #!/bin/bash
 set -e
 
-# 0. 로컬 변경사항 있으면 자동 stash
+# 0. Stash any work in progress
 STASHED=false
 if ! git diff --quiet || ! git diff --cached --quiet; then
-  echo "💾 Stashing local changes..."
-  git stash push -u -m "deploy-temp"
+  echo "💾 Stashing tracked changes..."
+  git stash push -m "deploy-temp"   # *no* -u, so node_modules stays OUT of the stash
   STASHED=true
 fi
 
-# 1. main 브랜치에서만 실행
+# 1. Only from main
 if [[ $(git branch --show-current) != "main" ]]; then
-  echo "⚠️ Run this from main branch."
-  # pop stash if we stashed
-  $STASHED && git stash pop || true
+  echo "⚠️  Please run from main branch."
+  $STASHED && git stash pop
   exit 1
 fi
 
-echo "📦 Building project..."
+# 2. Build
+echo "📦 Building..."
 npm run build
 
-# 2. 빌드 결과 백업
+# 3. Back up build
 TEMP_DIR=$(mktemp -d)
 cp -r build/* "$TEMP_DIR"
 
-# 3. gh-pages로 전환 (새 브랜치 생성 포함)
-git switch gh-pages || git checkout -b gh-pages
+# 4. Switch to gh-pages (force any dirty worktree)
+git switch gh-pages --force || git checkout -b gh-pages
 
-# 4. 트래킹된 파일만 삭제
+# 5. Clean out only tracked files
 git rm -rf .
 
-# 5. git will not touch ignored dirs like node_modules
+# 6. Clean untracked but leave ignored (no -x)
 git clean -fd
 
-# 6. 백업해 둔 build 복사
+# 7. Copy in new build
 cp -r "$TEMP_DIR"/* .
 rm -rf "$TEMP_DIR"
 
-# 7. 커밋 & 푸시 (변경 있을 때만)
+# 8. Commit & push
 git add .
-git diff --exit-code || git commit -m "🚀 deploy latest build"
+# Only commit if there’s actually something changed
+if ! git diff --cached --quiet ; then
+  git commit -m "🚀 deploy latest build"
+fi
 git push origin gh-pages --force
 
-# 8. main으로 복귀
-git switch main
+# 9. Always switch back to main, even if something above died
+git switch -f main || true
 
-# 9. 숨겨둔 변경사항 되돌리기
+# 10. Restore your WIP if we stashed it
 if [ "$STASHED" = true ]; then
-  echo "💾 Restoring your local changes..."
+  echo "💾 Restoring your tracked changes..."
   git stash pop
 fi
 
