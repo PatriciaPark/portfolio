@@ -147,7 +147,7 @@ export default function Lab() {
                                 key={item.title.en}
                                 {...(isClickable && {
                                     href: item.link,
-                                    target: "_blank",
+                                    // target: "_blank",
                                     rel: "noopener noreferrer"
                                 })}
                                 initial={{ opacity: 0, y: 30 }}

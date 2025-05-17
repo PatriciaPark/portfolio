@@ -311,21 +311,25 @@ export default function KoreanContentPage() {
       <div>
         {/* basic ecpressions */}
         {activeTab === "basicExpressions" && (
-          <div className="overflow-x-auto">
-            <table className="w-full table-auto border-collapse">
+          <div className="overflow-x-auto p-4 rounded-lg">
+            <table className="w-full table-auto border-separate border-spacing-1 table-glow">
               <thead>
-                <tr className="bg-gray-100 dark:bg-gray-800">
-                  <th className="border px-2 py-1 text-xs">English</th>
-                  <th className="border px-2 py-1 text-xs">Formal</th>
-                  <th className="border px-2 py-1 text-xs">Informal</th>
+                <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
+                  <th className="px-3 py-2 text-sm">English</th>
+                  <th className="px-3 py-2 text-sm">Formal</th>
+                  <th className="px-3 py-2 text-sm">Informal</th>
                 </tr>
               </thead>
               <tbody>
                 {tabData.basicExpressions.map((row, idx) => (
-                  <tr key={idx} className="odd:bg-white even:bg-gray-50 dark:odd:bg-gray-800 dark:even:bg-gray-700">
-                    <td className="border px-2 py-1 text-xs">{row.en}</td>
-                    <td className="border px-2 py-1 text-xs">{row.formal}</td>
-                    <td className="border px-2 py-1 text-xs">{row.informal}</td>
+                  <tr key={idx} className="odd:bg-gradient-to-r odd:from-transparent odd:to-cyan-400 
+                                           even:bg-gradient-to-r even:from-transparent even:to-indigo-400 
+                                           hover:from-cyan-200 hover:to-indigo-200
+                                           dark:hover:from-cyan-800 dark:hover:to-indigo-800
+                                           transition-colors">
+                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.en}</td>
+                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.formal}</td>
+                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.informal}</td>
                   </tr>
                 ))}
               </tbody>
@@ -335,21 +339,25 @@ export default function KoreanContentPage() {
 
         {/* number */}
         {activeTab === "number" && (
-          <div className="overflow-x-auto">
-            <table className="w-full table-auto border-collapse">
+          <div className="overflow-x-auto p-4 rounded-lg">
+            <table className="w-full table-auto border-separate border-spacing-1 table-glow">
               <thead>
-                <tr className="bg-gray-100 dark:bg-gray-800">
-                  <th className="border px-2 py-1 text-xs">English</th>
-                  <th className="border px-2 py-1 text-xs">Reading</th>
-                  <th className="border px-2 py-1 text-xs">Counting</th>
+                <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
+                  <th className="px-3 py-2 text-sm">English</th>
+                  <th className="px-3 py-2 text-sm">Reading</th>
+                  <th className="px-3 py-2 text-sm">Counting</th>
                 </tr>
               </thead>
               <tbody>
                 {tabData.number.map((row, idx) => (
-                  <tr key={idx} className="odd:bg-white even:bg-gray-50 dark:odd:bg-gray-800 dark:even:bg-gray-700">
-                    <td className="border px-2 py-1 text-xs">{row.en}</td>
-                    <td className="border px-2 py-1 text-xs">{row.reading}</td>
-                    <td className="border px-2 py-1 text-xs">{row.counting}</td>
+                  <tr key={idx} className="odd:bg-gradient-to-r odd:from-transparent odd:to-cyan-400 
+                                           even:bg-gradient-to-r even:from-transparent even:to-indigo-400 
+                                           hover:from-cyan-200 hover:to-indigo-200
+                                           dark:hover:from-cyan-800 dark:hover:to-indigo-800
+                                           transition-colors">
+                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.en}</td>
+                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.reading}</td>
+                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.counting}</td>
                   </tr>
                 ))}
               </tbody>
@@ -360,24 +368,28 @@ export default function KoreanContentPage() {
 
         {/* slangs */}
         {activeTab === "slangs" && (
-        <div className="overflow-x-auto">
-            <table className="w-full table-auto border-collapse">
+        <div className="overflow-x-auto p-4 rounded-lg">
+            <table className="w-full table-auto border-separate border-spacing-1 table-glow">
             <thead>
-                <tr className="bg-gray-100 dark:bg-gray-800">
-                <th className="border px-2 py-1 text-xs">English</th>
-                <th className="border px-2 py-1 text-xs">Korean</th>
-                <th className="border px-2 py-1 text-xs">Description</th>
+                <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
+                  <th className="px-3 py-2 text-sm">English</th>
+                  <th className="px-3 py-2 text-sm">Korean</th>
+                  <th className="px-3 py-2 text-sm">Description</th>
                 </tr>
             </thead>
             <tbody>
                 {tabData.slangs.map((row, idx) => (
                 <tr
                     key={idx}
-                    className="odd:bg-white even:bg-gray-50 dark:odd:bg-gray-800 dark:even:bg-gray-700"
+                    className="odd:bg-gradient-to-r odd:from-transparent odd:to-cyan-400 
+                               even:bg-gradient-to-r even:from-transparent even:to-indigo-400 
+                               hover:from-cyan-200 hover:to-indigo-200
+                               dark:hover:from-cyan-800 dark:hover:to-indigo-800
+                               transition-colors"
                 >
-                    <td className="border px-2 py-1 text-xs">{row.en}</td>
-                    <td className="border px-2 py-1 text-xs">{row.ko}</td>
-                    <td className="border px-2 py-1 text-xs">{row.description}</td>
+                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.en}</td>
+                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.ko}</td>
+                    <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{row.description}</td>
                 </tr>
                 ))}
             </tbody>
@@ -387,15 +399,14 @@ export default function KoreanContentPage() {
 
         {/* homophones */}
         {activeTab === "homophones" && (
-        <div className="overflow-x-auto">
-            <table className="w-full table-auto border-collapse">
+        <div className="overflow-x-auto p-4 rounded-lg">
+            <table className="w-full table-auto border-separate border-spacing-1 table-glow">
             <thead>
-                <tr className="bg-gray-100 dark:bg-gray-800">
-                <th className="border px-2 py-1 text-xs">Word</th>
-                <th className="border px-2 py-1 text-xs">Pron.</th>
-                <th className="border px-2 py-1 text-xs">English Meaning</th>
-                <th className="border px-2 py-1 text-xs">Korean Meaning</th>
-                <th className="border px-2 py-1 text-xs">Label</th>
+                <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
+                  <th className="px-3 py-2 text-sm">Word</th>
+                  <th className="px-3 py-2 text-sm">Pron.</th>
+                  <th className="px-3 py-2 text-sm">English Meaning</th>
+                  <th className="px-3 py-2 text-sm">Korean Meaning</th>
                 </tr>
             </thead>
             <tbody>
@@ -403,27 +414,30 @@ export default function KoreanContentPage() {
                 item.meanings.map((m, j) => (
                     <tr
                     key={`${i}-${j}`}
-                    className="odd:bg-white even:bg-gray-50 dark:odd:bg-gray-800 dark:even:bg-gray-700"
+                    className="odd:bg-gradient-to-r odd:from-transparent odd:to-cyan-400 
+                               even:bg-gradient-to-r even:from-transparent even:to-indigo-400 
+                               hover:from-cyan-200 hover:to-indigo-200
+                               dark:hover:from-cyan-800 dark:hover:to-indigo-800
+                               transition-colors"
                     >
                     {j === 0 && (
                         <>
                         <td
                             rowSpan={item.meanings.length}
-                            className="border px-2 py-1 text-xs align-top"
+                            className="px-3 py-2 text-xs text-gray-800 dark:text-cyan-200 align-center text-center"
                         >
                             {item.word}
                         </td>
                         <td
                             rowSpan={item.meanings.length}
-                            className="border px-2 py-1 text-xs align-top"
+                            className="px-3 py-2 text-xs text-gray-800 dark:text-cyan-200 align-center text-center"
                         >
                             {item.pron}
                         </td>
                         </>
                     )}
-                    <td className="border px-2 py-1 text-xs">{m.eng}</td>
-                    <td className="border px-2 py-1 text-xs">{m.ko}</td>
-                    <td className="border px-2 py-1 text-xs">{m.label}</td>
+                        <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{m.eng}</td>
+                        <td className="px-3 py-2 text-xs text-gray-800 dark:text-white">{m.ko}</td>
                     </tr>
                 ))
                 )}
@@ -438,7 +452,7 @@ export default function KoreanContentPage() {
             <a
             href="/basic_expressions.xlsx"
             download="BasicKorean_v1.xlsx"
-            className="inline-block px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+            className="inline-block px-6 py-3 bg-lime-500 text-white rounded-lg hover:bg-lime-600 transition"
             >
             {language === 'en' ? 'Download Basic Korean as Excel' : '기본 한국어 엑셀 다운로드'}
             </a>
