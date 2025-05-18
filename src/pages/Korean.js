@@ -312,9 +312,9 @@ export default function KoreanContentPage() {
         {/* basic ecpressions */}
         {activeTab === "basicExpressions" && (
           <div className="overflow-x-auto p-4 rounded-lg">
-            <table className="w-full table-auto border-separate border-spacing-1 table-glow">
+            <table className="w-full table-auto border-collapse table-glow">
               <thead>
-                <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
+                <tr className="bg-cyan-600 dark:bg-cyan-500 text-white divide-x divide-cyan-100">
                   <th className="px-3 py-2 text-lg">English</th>
                   <th className="px-3 py-2 text-lg">Formal</th>
                   <th className="px-3 py-2 text-lg">Informal</th>
@@ -322,14 +322,14 @@ export default function KoreanContentPage() {
               </thead>
               <tbody>
                 {tabData.basicExpressions.map((row, idx) => (
-                  <tr key={idx} className="odd:bg-gradient-to-r odd:from-transparent odd:to-cyan-400 
-                                           even:bg-gradient-to-r even:from-transparent even:to-indigo-400 
-                                           hover:from-cyan-200 hover:to-indigo-200
-                                           dark:hover:from-cyan-800 dark:hover:to-indigo-800
+                  <tr key={idx} className="odd:bg-white even:bg-cyan-50
+                                           dark:odd:bg-gray-800 dark:even:bg-gray-700
+                                           hover:bg-cyan-200 dark:hover:bg-cyan-900
+                                           divide-x divide-cyan-100 dark:divide-gray-600
                                            transition-colors">
-                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.en}</td>
-                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.formal}</td>
-                    <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.informal}</td>
+                    <td className="px-3 py-2 text-base text-gray-900 dark:text-white">{row.en}</td>
+                    <td className="px-3 py-2 text-base text-gray-900 dark:text-white">{row.formal}</td>
+                    <td className="px-3 py-2 text-base text-gray-900 dark:text-white">{row.informal}</td>
                   </tr>
                 ))}
               </tbody>
@@ -340,9 +340,9 @@ export default function KoreanContentPage() {
         {/* number */}
         {activeTab === "number" && (
           <div className="overflow-x-auto p-4 rounded-lg">
-            <table className="w-full table-auto border-separate border-spacing-1 table-glow">
+            <table className="w-full table-auto border-collapse table-glow">
               <thead>
-                <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
+                <tr className="bg-cyan-600 dark:bg-cyan-500 text-white divide-x divide-cyan-100">
                   <th className="px-3 py-2 text-lg">English</th>
                   <th className="px-3 py-2 text-lg">Reading</th>
                   <th className="px-3 py-2 text-lg">Counting</th>
@@ -350,10 +350,10 @@ export default function KoreanContentPage() {
               </thead>
               <tbody>
                 {tabData.number.map((row, idx) => (
-                  <tr key={idx} className="odd:bg-gradient-to-r odd:from-transparent odd:to-cyan-400 
-                                           even:bg-gradient-to-r even:from-transparent even:to-indigo-400 
-                                           hover:from-cyan-200 hover:to-indigo-200
-                                           dark:hover:from-cyan-800 dark:hover:to-indigo-800
+                  <tr key={idx} className="odd:bg-white even:bg-cyan-50
+                                           dark:odd:bg-gray-800 dark:even:bg-gray-700
+                                           hover:bg-cyan-200 dark:hover:bg-cyan-900
+                                           divide-x divide-cyan-100 dark:divide-gray-600
                                            transition-colors">
                     <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.en}</td>
                     <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.reading}</td>
@@ -369,9 +369,9 @@ export default function KoreanContentPage() {
         {/* slangs */}
         {activeTab === "slangs" && (
         <div className="overflow-x-auto p-4 rounded-lg">
-            <table className="w-full table-auto border-separate border-spacing-1 table-glow">
+            <table className="w-full table-auto border-collapse table-glow">
             <thead>
-                <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
+                <tr className="bg-cyan-600 dark:bg-cyan-500 text-white divide-x divide-cyan-100">
                   <th className="px-3 py-2 text-lg">English</th>
                   <th className="px-3 py-2 text-lg">Korean</th>
                   <th className="px-3 py-2 text-lg">Description</th>
@@ -381,10 +381,10 @@ export default function KoreanContentPage() {
                 {tabData.slangs.map((row, idx) => (
                 <tr
                     key={idx}
-                    className="odd:bg-gradient-to-r odd:from-transparent odd:to-cyan-400 
-                               even:bg-gradient-to-r even:from-transparent even:to-indigo-400 
-                               hover:from-cyan-200 hover:to-indigo-200
-                               dark:hover:from-cyan-800 dark:hover:to-indigo-800
+                    className="odd:bg-white even:bg-cyan-50
+                               dark:odd:bg-gray-800 dark:even:bg-gray-700
+                               hover:bg-cyan-200 dark:hover:bg-cyan-900
+                               divide-x divide-cyan-100 dark:divide-gray-600
                                transition-colors"
                 >
                     <td className="px-3 py-2 text-base text-gray-800 dark:text-white">{row.en}</td>
@@ -400,9 +400,9 @@ export default function KoreanContentPage() {
         {/* homophones */}
         {activeTab === "homophones" && (
         <div className="overflow-x-auto p-4 rounded-lg">
-            <table className="w-full table-auto border-separate border-spacing-1 table-glow">
+            <table className="w-full table-auto border-collapse table-glow">
             <thead>
-                <tr className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-white">
+                <tr className="bg-cyan-600 dark:bg-cyan-500 text-white divide-x divide-cyan-100">
                   <th className="px-3 py-2 text-lg">Word</th>
                   <th className="px-3 py-2 text-lg">Pron.</th>
                   <th className="px-3 py-2 text-lg">English Meaning</th>
@@ -414,10 +414,10 @@ export default function KoreanContentPage() {
                 item.meanings.map((m, j) => (
                     <tr
                     key={`${i}-${j}`}
-                    className="odd:bg-gradient-to-r odd:from-transparent odd:to-cyan-400 
-                               even:bg-gradient-to-r even:from-transparent even:to-indigo-400 
-                               hover:from-cyan-200 hover:to-indigo-200
-                               dark:hover:from-cyan-800 dark:hover:to-indigo-800
+                    className="odd:bg-white even:bg-cyan-50
+                               dark:odd:bg-gray-800 dark:even:bg-gray-700
+                               hover:bg-cyan-200 dark:hover:bg-cyan-900
+                               divide-x divide-cyan-100 dark:divide-gray-600
                                transition-colors"
                     >
                     {j === 0 && (
