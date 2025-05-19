@@ -73,7 +73,7 @@ export default function BrickBreaker() {
         ctx.beginPath();
         ctx.rect(
             paddleXRef.current,
-            canvasRef.current.height - paddleHeight,
+            canvasSize.height - paddleHeight,
             paddleWidth,
             paddleHeight
         );

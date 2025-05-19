@@ -50,7 +50,11 @@ git push origin gh-pages --force
 # 10. main 복귀
 git switch -f main || true
 
-# 11. 스태시 복원
+# 11. 의존성 재설치
+echo "🔄 Restoring dependencies..."
+npm install
+
+# 12. 스태시 복원 (tracked changes만)
 if [ "$STASHED" = true ]; then
   echo "💾 Restoring your tracked changes..."
   git stash pop

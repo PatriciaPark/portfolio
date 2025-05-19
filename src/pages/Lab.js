@@ -48,7 +48,16 @@ const tabContent = {
                 en: "A runner-style game where you break through obstacles with bricks while running. Built with React + Canvas.",
                 ko: "달리며 벽돌로 장애물을 제거하는 러너 스타일 미니 게임입니다. React + Canvas로 제작."
             },
-            status: { en: "In Progress", ko: "작업중" },
+            status: { en: "Playable", ko: "플레이가능" },
+            link: "/portfolio#/brt" 
+        },
+        {
+            title: { en: "The Battle Dolphins", ko: "돌고래 대전쟁" },
+            description: {
+                en: "An underwater tower defense game where adorable dolphins fight off sea invaders. Built with React + PixiJS.",
+                ko: "바닷속 침략자를 막아내는 수중 타워 디펜스 게임! React + PixiJS로 제작."
+            },
+            status: { en: "Coming Soon", ko: "준비중" },
             link: "" 
         }
     ],

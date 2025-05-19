@@ -388,7 +388,7 @@ export default function Game() {
 
     return (
         <div className="flex flex-col items-center mt-6">
-            <h2 className="font-press font-bold mb-4 text-rose-400">🧱Brick Girl: Space Defense🌠</h2>
+            <h2 className="font-press font-bold mb-4 text-rose-400">Brick Girl:Space Defense</h2>
             <canvas
                 ref={canvasRef}
                 width={canvasSize.width}
