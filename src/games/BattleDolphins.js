@@ -186,6 +186,13 @@ export default function BattleDolphins() {
         window.addEventListener('click', startBGM);
     }, []);
 
+    // 페이지 벗어날 때 BGM off
+    useEffect(() => {
+        return () => {
+            stopBGM(); // 컴포넌트가 사라질 때도 정지
+        };
+    }, []);
+
     // 코인 자동 증가 로직
     useEffect(() => {
         if (gameOver || gameClear) return;

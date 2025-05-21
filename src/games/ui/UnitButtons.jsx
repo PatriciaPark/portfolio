@@ -1,17 +1,17 @@
 export default function UnitButtons({ coins = 0, onSummon = () => { }, className = "", disabled }) {
     const units = [
         {
-            name: "돌핀 스카우트", cost: 20, emoji: "🐬",
+            name: "돌핀 스카우트", cost: 30, emoji: "🐬",
             speed: 0.4, hp: 80, atk: 60, // 빠르고 약한 연속공격형
             castleCooldown: 0
         },
         {
-            name: "딥블루", cost: 50, emoji: "🐟",
+            name: "딥블루", cost: 70, emoji: "🐟",
             speed: 0.3, hp: 160, atk: 120, // 밸런스형
             castleCooldown: 0
         },
         {
-            name: "헬리돌핀", cost: 100, emoji: "🐡",
+            name: "헬리돌핀", cost: 140, emoji: "🐡",
             speed: 0.2, hp: 240, atk: 180, // 느리지만 단단하고 강함
             castleCooldown: 0
         },

@@ -52,7 +52,7 @@ const tabContent = {
             link: "/portfolio#/brt" 
         },
         {
-            title: { en: "The Battle Dolphins", ko: "돌고래 대전쟁" },
+            title: { en: "The Battle Dolphins 🔊", ko: "돌고래 대전쟁 🔊" },
             description: {
                 en: "An underwater tower defense game where adorable dolphins fight off sea invaders. Built with React + PixiJS.",
                 ko: "바닷속 침략자를 막아내는 수중 타워 디펜스 게임! React + PixiJS로 제작."
