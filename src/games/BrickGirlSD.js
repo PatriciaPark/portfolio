@@ -121,25 +121,8 @@ export default function Game() {
                 ctx.fill();
             });
 
-            // 게임 종료 처리
-            if (gameOver || gameClear) {
-                // GA 추적
-                gtag("event", "game_over", {
-                    event_category: "game",
-                    event_label: "brickgirl",
-                });
-
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                ctx.font = "16px 'Press Start 2P'";
-                ctx.textAlign = "center";
-                ctx.fillStyle = "white";
-                ctx.fillText(gameOver ? "😥 GAME OVER" : "🎉 MISSION COMPLETE!", centerX, centerY - 20);
-                ctx.font = "13px 'Press Start 2P'";
-                ctx.fillStyle = "#93c5fd";
-                ctx.fillText("Tap or Press R to Restart", centerX, centerY + 20);
-                return; // draw 중단
-            }
+            // ✅ 게임오버 or 클리어 상태에서는 게임 로직을 실행하지 않음
+            if (gameOver || gameClear) { return; }
 
             // 브릭걸 스프라이트 그리기
             ctx.drawImage(
@@ -267,17 +250,6 @@ export default function Game() {
         // draw();
 
         const onTouchStart = (e) => {
-            if (gameOver || gameClear) {
-                // GA 게임 재시작 추적 mobile
-                gtag("event", "BG_game_restart_mo", {
-                    event_category: "game",
-                    event_label: "brickgirl",
-                });
-
-                window.location.reload();
-                return;
-            }
-
             const touchY = e.touches[0].clientY - canvasRef.current.getBoundingClientRect().top;
             girlYRef.current = Math.min(Math.max(touchY, 20), canvasRef.current.height - 20);
 
@@ -315,15 +287,6 @@ export default function Game() {
             if (e.key === " " && !shootCooldownRef.current && !gameOver) {
                 fireBricksRef.current();
             }
-            if ((e.key === "r" || e.key === "R") && (gameOver || gameClear)) {
-                // GA 게임 재시작 추적 pc
-                gtag("event", "BG_game_restart_pc", {
-                    event_category: "game",
-                    event_label: "brickgirl",
-                });
-                
-                window.location.reload();
-            }
         });
 
         window.addEventListener("keyup", (e) => {
@@ -356,7 +319,7 @@ export default function Game() {
                     emoji: emojis[Math.floor(Math.random() * emojis.length)],
                 });
             }
-        }, 1500);
+        }, 1000);
         return () => clearInterval(interval);
     }, [canvasSize, gameOver, gameClear]);
 
@@ -389,16 +352,33 @@ export default function Game() {
     return (
         <div className="flex flex-col items-center mt-6">
             <h2 className="font-press font-bold mb-4 text-rose-400">Brick Girl:Space Defense</h2>
-            <canvas
-                ref={canvasRef}
-                width={canvasSize.width}
-                height={canvasSize.height}
-                className="bg-black rounded shadow-md touch-none"
-                style={{ width: "100%", maxWidth: "480px" }}
-            />
-            <p className="text-xs text-center mt-4 text-gray-500 dark:text-gray-400 font-press">
-                ⬆ UP ⬇ DOWN • SPACE BAR 🧱
-            </p>
+            <div className="relative" style={{ width: canvasSize.width, height: canvasSize.height }}>
+                <canvas
+                    ref={canvasRef}
+                    width={canvasSize.width}
+                    height={canvasSize.height}
+                    className="bg-black rounded shadow-md touch-none"
+                    style={{ width: "100%", maxWidth: "480px" }}
+                />
+                <p className="text-xs text-center mt-4 text-gray-500 dark:text-gray-400 font-press">
+                    ⬆ UP ⬇ DOWN • SPACE BAR 🧱
+                </p>
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none" style={{ backgroundColor: (gameOver || gameClear) ? 'rgba(0,0,0,0.4)' : 'transparent' }}>
+                    {(gameOver || gameClear) && (
+                        <>
+                            <p className="text-xl font-press text-white text-center">
+                                {gameOver ? "😢 GAME OVER" : "🎉MISSION COMPLETE!"}
+                            </p>
+                            <button
+                                onClick={() => window.location.reload()}
+                                className="font-press mt-4 px-4 py-2 bg-white text-black rounded-lg text-sm pointer-events-auto"
+                            >
+                                Restart
+                            </button>
+                        </>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }

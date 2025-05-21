@@ -57,8 +57,8 @@ const tabContent = {
                 en: "An underwater tower defense game where adorable dolphins fight off sea invaders. Built with React + PixiJS.",
                 ko: "바닷속 침략자를 막아내는 수중 타워 디펜스 게임! React + PixiJS로 제작."
             },
-            status: { en: "Coming Soon", ko: "준비중" },
-            link: "" 
+            status: { en: "Playable", ko: "플레이가능" },
+            link: "/portfolio#/bd" 
         }
     ],
     brickGirl: [
@@ -168,7 +168,7 @@ export default function Lab() {
                                 <h2 className="text-xl font-semibold mb-2 text-indigo-500 dark:text-indigo-300">
                                     {item.title[language]}
                                 </h2>
-                                <p className="text-sm mb-2">{item.description[language]}</p>
+                                <p className="text-sm mb-4">{item.description[language]}</p>
                                 <span className={`text-xs px-3 py-1 inline-block rounded-full ${getStatusBadgeClass(item.status[language])}`}>
                                     {item.status[language]}
                                 </span>

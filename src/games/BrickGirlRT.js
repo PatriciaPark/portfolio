@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from 'react';
 const BrickGirlRT = () => {
     const canvasRef = useRef(null);
     const spriteRef = useRef(null);
+    const [canvasSize, setCanvasSize] = useState({ width: 480, height: 240 });
     const [spriteLoaded, setSpriteLoaded] = useState(false);
     const [gameOver, setGameOver] = useState(false);
     const [gameClear, setGameClear] = useState(false);
@@ -113,10 +114,10 @@ const BrickGirlRT = () => {
         const screenMid = window.innerWidth / 2;
 
         // 👉 게임오버 또는 클리어 시 터치로 재시작
-        if (gameOver || gameClear) {
-            window.location.reload();
-            return;
-        }
+        // if (gameOver || gameClear) {
+        //     window.location.reload();
+        //     return;
+        // }
 
         // 오른쪽 터치 → 점프
         if (touchX > screenMid && jumpCount.current < maxJumps) {
@@ -240,19 +241,25 @@ const BrickGirlRT = () => {
                 return;
             }
 
-            // 게임 종료 처리
+            // ✅ 게임오버 or 클리어 상태에서는 게임 로직을 실행하지 않음
             if (gameOver || gameClear) {
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                ctx.font = "16px 'Press Start 2P'";
-                ctx.textAlign = "center";
-                ctx.fillStyle = "white";
-                ctx.fillText(gameOver ? "😥 GAME OVER" : "🎉 MISSION COMPLETE!", centerX, centerY - 20);
-                ctx.font = "13px 'Press Start 2P'";
-                ctx.fillStyle = "#93c5fd";
-                ctx.fillText("Tap or Press R to Restart", centerX, centerY + 20);
-                return; // draw 중단
+                raf = requestAnimationFrame(draw); // 계속 루프 유지
+                return;
             }
+
+            // 게임 종료 처리
+            // if (gameOver || gameClear) {
+            //     const centerX = canvas.width / 2;
+            //     const centerY = canvas.height / 2;
+            //     ctx.font = "24px 'Press Start 2P'";
+            //     ctx.textAlign = "center";
+            //     ctx.fillStyle = "white";
+            //     ctx.fillText(gameOver ? "😥 GAME OVER" : "🎉 MISSION COMPLETE!", centerX, centerY - 20);
+            //     ctx.font = "18px 'Press Start 2P'";
+            //     ctx.fillStyle = "#93c5fd";
+            //     ctx.fillText("Tap or Press R to Restart", centerX, centerY + 20);
+            //     return; // draw 중단
+            // }
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -486,12 +493,6 @@ const BrickGirlRT = () => {
                 return;
             }
 
-
-            if (isEnemyColliding) {
-                setGameOver(true);
-                return;
-            }
-
             // 좌측 벽 충돌 시 게임 오버
             const girlScreenX = girlWorldX.current - cameraX.current;
             if (isBlockedHorizontally() && girlScreenX <= 0) {
@@ -604,24 +605,41 @@ const BrickGirlRT = () => {
         if (e.key === "ArrowUp") keys.current.up = true;
         if (e.key === "ArrowDown") keys.current.down = true;
 
-        if ((e.key === "r" || e.key === "R") && (gameOver || gameClear)) {
-            window.location.reload();
-        }
+        // if ((e.key === "r" || e.key === "R") && (gameOver || gameClear)) {
+        //     window.location.reload();
+        // }
     });
 
     return (
-        <div className="flex flex-col items-center mt-6">
+        <div className="flex flex-col items-center mt-6 relative">
             <h2 className="font-press font-bold mb-4 text-rose-400">Brick Girl:Run & Throw</h2>
-            <canvas
-                ref={canvasRef}
-                width={800}
-                height={400}
-                className="bg-black rounded shadow-md touch-none"
-                style={{ width: '100%', maxWidth: "480px", display: 'block' }}
-            />
-            <p className="text-xs text-center mt-4 text-gray-500 dark:text-gray-400 font-press">
-                SPACE BAR 🧱 • ⬆️ Jump
-            </p>
+            <div className="relative" style={{ width: canvasSize.width, height: canvasSize.height }}>
+                <canvas
+                    ref={canvasRef}
+                    width={800}
+                    height={400}
+                    className="bg-black rounded shadow-md touch-none"
+                    style={{ width: '100%', maxWidth: "480px", display: 'block' }}
+                />
+                <p className="text-xs text-center mt-4 text-gray-500 dark:text-gray-400 font-press">
+                    SPACE BAR 🧱 • ⬆️ Jump
+                </p>
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none" style={{ backgroundColor: (gameOver || gameClear) ? 'rgba(0,0,0,0.4)' : 'transparent' }}>
+                    {(gameOver || gameClear) && (
+                        <>
+                            <p className="text-xl font-press text-white text-center">
+                                {gameOver ? "😢 GAME OVER" : "🎉MISSION COMPLETE!"}
+                            </p>
+                            <button
+                                onClick={() => window.location.reload()}
+                                className="font-press mt-4 px-4 py-2 bg-white text-black rounded-lg text-sm pointer-events-auto"
+                            >
+                                Restart
+                            </button>
+                        </>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };

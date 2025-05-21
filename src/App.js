@@ -11,6 +11,7 @@ import Projects from "./pages/Projects";
 import BB from './games/BrickBreaker';
 import BSD from './games/BrickGirlSD';
 import BRT from './games/BrickGirlRT';
+import BD from './games/BattleDolphins';
 import ScrollToTop from "./components/ScrollToTop";
 import ThemeToggle from "./components/ThemeToggle";
 import LanguageToggle from "./components/LanguageToggle";
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/bb" element={<BB />} />
           <Route path="/bsd" element={<BSD />} />
           <Route path="/brt" element={<BRT />} />
+          <Route path="/bd" element={<BD />} />
         </Routes>
       </div>
       <footer className="w-full py-6 mt-12 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
