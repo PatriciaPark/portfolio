@@ -231,7 +231,7 @@ export default function BattleDolphins() {
 
             // 시간 경과에 따라 간격 점점 줄이기
             elapsed += spawnInterval;
-            if (spawnInterval > 300 && elapsed >= 1000) { // 1초마다 간격 감소
+            if (spawnInterval > 500 && elapsed >= 1000) { // 1초마다 간격 감소
                 spawnInterval -= 100;
                 elapsed = 0;
 
@@ -279,7 +279,7 @@ export default function BattleDolphins() {
     const handleSuperSkill = () => {
         if (skillGauge < 100) return;
 
-        const lines = 10;
+        const lines = 15;
         const spacing = canvasSize.height / (lines + 1);
         const newBursts = Array.from({ length: lines }).map((_, i) => ({
             emoji: '🌀',
@@ -400,7 +400,7 @@ export default function BattleDolphins() {
             const oldEnemies = enemiesRef.current;
             enemiesRef.current = oldEnemies.filter(e => {
                 const alive = e.hp > 0;
-                if (!alive) addCoins(30);
+                if (!alive) addCoins(40);
                 return alive;
             });
 
