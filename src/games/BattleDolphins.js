@@ -279,7 +279,7 @@ export default function BattleDolphins() {
     const handleSuperSkill = () => {
         if (skillGauge < 100) return;
 
-        const lines = 15;
+        const lines = 10;
         const spacing = canvasSize.height / (lines + 1);
         const newBursts = Array.from({ length: lines }).map((_, i) => ({
             emoji: '🌀',
@@ -400,7 +400,7 @@ export default function BattleDolphins() {
             const oldEnemies = enemiesRef.current;
             enemiesRef.current = oldEnemies.filter(e => {
                 const alive = e.hp > 0;
-                if (!alive) addCoins(40);
+                if (!alive) addCoins(30);
                 return alive;
             });
 
