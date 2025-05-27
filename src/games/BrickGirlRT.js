@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { playSound, stopBGM, sounds } from './sounds';
 
 const BrickGirlRT = () => {
     const canvasRef = useRef(null);
@@ -107,6 +108,14 @@ const BrickGirlRT = () => {
     // 적
     const flyingEnemies = useRef([]); // 날아다니는 적 👾
     const walkingEnemies = useRef([]); // 평지에서 걷는 적 👽
+
+    // 전체 사운드 제어
+    const [muted, setMuted] = useState(false);
+    const toggleMute = () => {
+        const newMuted = !muted;
+        setMuted(newMuted);
+        Howler.mute(newMuted);
+    };
 
     // 모바일 터치 이벤트
     const handleTouch = (e) => {
@@ -403,6 +412,7 @@ const BrickGirlRT = () => {
                 girlY.current += velocityY.current;
 
                 if (girlY.current > canvas.height) {
+                    playSound('defeat');
                     setGameOver(true);
                     return;
                 }
@@ -421,6 +431,7 @@ const BrickGirlRT = () => {
                         p.y + 10 > e.y &&
                         p.y < e.y + tileSize;
                     if (isHit) {
+                        playSound('tap');
                         projectiles.current.splice(pi, 1); // 벽돌 삭제
                     }
                     return !isHit;
@@ -434,6 +445,7 @@ const BrickGirlRT = () => {
                         p.y + 10 > e.y &&
                         p.y < e.y + tileSize;
                     if (isHit) {
+                        playSound('metalhit');
                         projectiles.current.splice(pi, 1); // 벽돌 삭제
                     }
                     return !isHit;
@@ -489,6 +501,7 @@ const BrickGirlRT = () => {
             });
 
             if (isEnemyColliding) {
+                playSound('defeat');
                 setGameOver(true);
                 return;
             }
@@ -568,10 +581,12 @@ const BrickGirlRT = () => {
 
                     // ⭐ 50개 획득 시 게임 클리어
                     if (starCount.current === 50) {
+                        playSound('victory');
                         setGameClear(true);
                         return false; // 별 제거
                     }
 
+                    playSound('jumpcoin');
                     return false; // 별 제거
                 }
 
@@ -621,6 +636,16 @@ const BrickGirlRT = () => {
                     className="bg-black rounded shadow-md touch-none"
                     style={{ width: '100%', maxWidth: "480px", display: 'block' }}
                 />
+                <button
+                    onClick={toggleMute}
+                    className={`absolute top-2 right-2 z-10 w-9 h-9 rounded-full
+                                flex items-center justify-center font-press text-xl
+                                ${muted ? 'bg-gray-600/50' : 'bg-rose-500/50'}
+                                text-white hover:brightness-110 backdrop-blur-sm transition`}
+                    aria-label="Toggle Sound"
+                >
+                    <span className="-translate-y-[3px] opacity-50">{muted ? '🔇' : '🔊'}</span>
+                </button>
                 <p className="text-xs text-center mt-4 text-gray-500 dark:text-gray-400 font-press">
                     SPACE BAR 🧱 • ⬆️ Jump
                 </p>

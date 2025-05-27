@@ -43,7 +43,7 @@ const tabContent = {
             link: "/portfolio#/bsd"
         },
         {
-            title: { en: "Brick Girl: Run & Throw", ko: "브릭걸: 런 & 스로우" },
+            title: { en: "Brick Girl: Run & Throw 🔊", ko: "브릭걸: 런 & 스로우 🔊" },
             description: {
                 en: "A runner-style game where you break through obstacles with bricks while running. Built with React + Canvas.",
                 ko: "달리며 벽돌로 장애물을 제거하는 러너 스타일 미니 게임입니다. React + Canvas로 제작."

@@ -6,12 +6,14 @@ const base = process.env.PUBLIC_URL || window.location.origin;
 const sounds = {
     bgm: new Howl({ src: [base + '/sfx/bgm.mp3'], volume: 0.4, loop: true, rate: 0.5 }),
     hit: new Howl({ src: [base + '/sfx/hit.mp3'], volume: 0.7 }),
+    tap: new Howl({ src: [base + '/sfx/tap.mp3'], volume: 0.4 }),
     coin: new Howl({ src: [base + '/sfx/coin.mp3'], volume: 0.4 }),
     super: new Howl({ src: [base + '/sfx/super.mp3'], volume: 0.6 }),
     defeat: new Howl({ src: [base + '/sfx/defeat.mp3'], volume: 0.5 }),
     deploy: new Howl({ src: [base + '/sfx/deploy.mp3'], volume: 0.7 }),
     victory: new Howl({ src: [base + '/sfx/victory.mp3'], volume: 0.5 }),
     jumpcoin: new Howl({ src: [base + '/sfx/jumpcoin.mp3'], volume: 0.4 }),
+    metalhit: new Howl({ src: [base + '/sfx/metalhit.mp3'], volume: 0.4 }),
 };
 
 // 유틸 함수: 이름으로 재생
