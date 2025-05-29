@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
 
 // 고정된 탭 key 목록
-const tabKeys = ["miniGames", "brickGirl", "novel", "basicKorean"];
+const tabKeys = ["miniGames", "brickGirl", "novel", "korean"];
 
 // 다국어 탭 라벨
 const tabLabels = {
@@ -11,13 +11,13 @@ const tabLabels = {
         miniGames: "Mini Games",
         brickGirl: "Brick Girl",
         novel: "Novel",
-        basicKorean: "Basic Korean"
+        korean: "Korean"
     },
     ko: {
         miniGames: "미니게임",
         brickGirl: "브릭걸",
         novel: "소설",
-        basicKorean: "기본 한국어"
+        korean: "한국어"
     }
 };
 
@@ -40,7 +40,7 @@ const tabContent = {
                 ko: "우주 침공을 막아라! 벽돌을 던져 외계인을 처치하는 슈팅형 미니 게임입니다. React + Canvas로 제작."
             },
             status: { en: "Playable", ko: "플레이가능" },
-            link: "/portfolio#/bsd"
+            link: "/portfolio#/bgsd"
         },
         {
             title: { en: "Brick Girl: Run & Throw 🔊", ko: "브릭걸: 런 & 스로우 🔊" },
@@ -49,7 +49,7 @@ const tabContent = {
                 ko: "달리며 벽돌로 장애물을 제거하는 러너 스타일 미니 게임입니다. React + Canvas로 제작."
             },
             status: { en: "Playable", ko: "플레이가능" },
-            link: "/portfolio#/brt" 
+            link: "/portfolio#/bgrt" 
         },
         {
             title: { en: "The Battle Dolphins 🔊", ko: "돌고래 대전쟁 🔊" },
@@ -59,6 +59,15 @@ const tabContent = {
             },
             status: { en: "Playable", ko: "플레이가능" },
             link: "/portfolio#/bd" 
+        },
+        {
+            title: { en: "Brick Girl: Maze Escape", ko: "브릭걸: 미로 탈출" },
+            description: {
+                en: "An underwater tower defense game where adorable dolphins fight off sea invaders. Built with React + PixiJS.",
+                ko: "바닷속 침략자를 막아내는 수중 타워 디펜스 게임! React + PixiJS로 제작."
+            },
+            status: { en: "In Progress", ko: "작업중" },
+            link: "" 
         }
     ],
     brickGirl: [
@@ -83,7 +92,7 @@ const tabContent = {
             link: ""
         }
     ],
-    basicKorean: [
+    korean: [
         {
             title: { en: "Let's learn Basic Korean😉", ko: "기본 한국어를 배워봅시다😉" },
             description: {
@@ -92,7 +101,22 @@ const tabContent = {
             },
             status: { en: "Playable", ko: "플레이가능" },
             link: "/portfolio#/korean"
-        }
+        },
+        {
+        title: { 
+            en: "Jobberbell’s Chronicles", 
+            ko: "이직요정 에세이" 
+        },
+        description: {
+            en: "A series of real-life adventures from Jobberbell—stumbling through the world with bold steps. (Only in Korean)",
+            ko: "모험의 연속! 세계 곳곳을 누비며 좌충우돌 펼쳐지는, 이직요정의 리얼 에세이."
+        },
+        status: { 
+            en: "Playable", 
+            ko: "플레이가능" 
+        },
+        link: "https://brunch.co.kr/@jobberbell#works"
+    }
     ]
 };
 
@@ -156,8 +180,8 @@ export default function Lab() {
                                 key={item.title.en}
                                 {...(isClickable && {
                                     href: item.link,
-                                    // target: "_blank",
-                                    rel: "noopener noreferrer"
+                                    target: item.link.startsWith("http") ? "_blank" : "_self",
+                                    rel: item.link.startsWith("http") ? "noopener noreferrer" : undefined
                                 })}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
