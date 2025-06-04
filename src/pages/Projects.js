@@ -49,9 +49,9 @@ const projects = [
       en: "A web-based platform with simulation tools for an astronomy lab. Includes a research website, upgraded calculator, and 3D cosmic simulation.",
       ko: "천문학 연구를 위한 웹 기반 시뮬레이션 플랫폼으로, 연구 웹사이트, 계산기 업그레이드, 우주 시뮬레이션을 포함한 통합 프로젝트."
     },
-    role: "Full-Stack Developer (Solo)",
+    role: "Full-Stack Developer",
     tech: ["Java", "JavaScript", "Unity3D", "C#", "HTML/CSS", "MATLAB", "Blender"],
-    link: "https://drive.google.com/file/d/1JIsROXUPEJb28KuV8tae9m8HHLBCaYfb/view"
+    link: "https://doi.org/10.8080/1020170114003"
   },
   {
     title: {

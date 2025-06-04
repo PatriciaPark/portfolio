@@ -49,7 +49,7 @@ const tabContent = {
                 ko: "달리며 벽돌로 장애물을 제거하는 러너 스타일 미니 게임입니다. React + Canvas로 제작."
             },
             status: { en: "Playable", ko: "플레이가능" },
-            link: "/portfolio#/bgrt" 
+            link: "/portfolio#/bgrt"
         },
         {
             title: { en: "The Battle Dolphins 🔊", ko: "돌고래 대전쟁 🔊" },
@@ -58,7 +58,7 @@ const tabContent = {
                 ko: "바닷속 침략자를 막아내는 수중 타워 디펜스 게임! React + PixiJS로 제작."
             },
             status: { en: "Playable", ko: "플레이가능" },
-            link: "/portfolio#/bd" 
+            link: "/portfolio#/bd"
         },
         {
             title: { en: "Brick Girl: Maze Escape", ko: "브릭걸: 미로 탈출" },
@@ -67,7 +67,7 @@ const tabContent = {
                 ko: "바닷속 침략자를 막아내는 수중 타워 디펜스 게임! React + PixiJS로 제작."
             },
             status: { en: "In Progress", ko: "작업중" },
-            link: "" 
+            link: ""
         }
     ],
     brickGirl: [
@@ -103,20 +103,17 @@ const tabContent = {
             link: "/portfolio#/korean"
         },
         {
-        title: { 
-            en: "Jobberbell’s Chronicles", 
-            ko: "이직요정 에세이" 
-        },
-        description: {
-            en: "A series of real-life adventures from Jobberbell—stumbling through the world with bold steps. (Only in Korean)",
-            ko: "모험의 연속! 세계 곳곳을 누비며 좌충우돌 펼쳐지는, 이직요정의 리얼 에세이."
-        },
-        status: { 
-            en: "Playable", 
-            ko: "플레이가능" 
-        },
-        link: "https://brunch.co.kr/@jobberbell#works"
-    }
+            title: {
+                en: "Jobberbell’s Chronicles",
+                ko: "이직요정 에세이"
+            },
+            description: {
+                en: "A series of real-life adventures from Jobberbell—stumbling through the world with bold steps. (Only in Korean)",
+                ko: "모험의 연속! 세계 곳곳을 누비며 좌충우돌 펼쳐지는, 이직요정의 리얼 에세이."
+            },
+            status: { en: "Playable", ko: "플레이가능" },
+            link: "https://brunch.co.kr/@jobberbell#works"
+        }
     ]
 };
 
