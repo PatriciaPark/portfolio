@@ -3,6 +3,19 @@ import { useLanguage } from "../context/LanguageContext";
 const projects = [
   {
     title: {
+      en: "JobPilot Biz - AI-powered Job Matching Service",
+      ko: "JobPilot Biz - AI 기반 맞춤 취업 서비스"
+    },
+    description: {
+      en: "A modern job platform leveraging AI to provide personalized job recommendations and career insights. Built with Next.js, TypeScript, and Python, deployed on Vercel and Render.",
+      ko: "AI를 활용해 맞춤형 취업 추천과 커리어 인사이트를 제공하는 최신 취업 플랫폼. Next.js, TypeScript, Python 기반으로 Vercel과 Render에 배포."
+    },
+    role: "Full-Stack Developer (Solo)",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "HTML", "Python", "Vercel", "Render"],
+    link: "https://jobpilotbiz.vercel.app/"
+  },
+  {
+    title: {
       en: "NeoOrder Lite - Order Management System",
       ko: "NeoOrder Lite - 주문 관리 시스템"
     },
