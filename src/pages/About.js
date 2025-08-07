@@ -101,7 +101,7 @@ export default function About() {
       </h1>
 
       <p className="mb-4">
-        👋 {language === "en" ? "Hello, I'm Youngjee Park." : "안녕하세요, 박영지입니다."}
+        👋 {language === "en" ? "Hello. Would you like to hear my story?" : "안녕하세요. 제 이야기 들어보실래요?"}
       </p>
 
       {paragraphs[language].map((para, i) => (

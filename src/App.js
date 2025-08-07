@@ -54,7 +54,7 @@ export default function App() {
         </Routes>
       </div>
       <footer className="w-full py-6 mt-12 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
-        <p>© {new Date().getFullYear()} YoungJee Park. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} YJP. All rights reserved.</p>
         <p className="mt-1">Built with React & TailwindCSS | Hosted on GitHub Pages</p>
       </footer>
     </div>
