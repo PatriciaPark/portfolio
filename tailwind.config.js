@@ -39,7 +39,7 @@ module.exports = {
       pattern: /dark:shadow-\[.*\]/,
     },
     {
-      pattern: /dark:drop-shadow-.*/, // ← 이거 추가!!!
+      pattern: /dark:drop-shadow-.*/,
     }
   ],
 
