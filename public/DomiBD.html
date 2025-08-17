@@ -7,6 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ERMVPRYRJX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ERMVPRYRJX');
+</script>
 <title>HBD Hyun Ik</title>
 <style>
   :root{ --bg:#0a0f1a; --star:#cfe8ff; --accent:#ffd166; --text:#f6f7fb; --soft:#9fb4d1; }
@@ -246,17 +255,6 @@
 </div>
 
 <script>
-  // === GA4 이벤트 헬퍼 (gtag 또는 GTM 둘 다 대응) ===
-  window.track = function(event, params = {}){
-    try{
-      if (window.gtag) {
-        window.gtag('event', event, params);
-      } else if (window.dataLayer && Array.isArray(window.dataLayer)) {
-        window.dataLayer.push({ event, ...params });
-      }
-    }catch(e){}
-  };
-  
   /* ===== 유틸 ===== */
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
@@ -311,11 +309,6 @@
     nextBtn.disabled = (idx === last);
     // ARIA 현재 슬라이드 라벨 갱신
     slideEls.forEach((s,i)=>s.setAttribute('aria-label', `${i+1} / ${last+1}`));
-    // GA 이벤트 트래킹
-    if (prevIdx !== idx){
-    track('carousel_slide', { index: idx+1, total: last+1 });
-    prevIdx = idx;
-  }
   }
   function goTo(i){ idx = clamp(i,0,last); render(); }
   function prev(){ if(idx>0) { idx--; render(); } }
