@@ -45,15 +45,20 @@
       0 0 36px rgba(108,222,238,.25);
   }
 
+  /* ===== 카드 캐러셀 ===== */
+  .carousel{position:relative;z-index:4;margin:10px auto;max-width:560px;overflow:hidden;}
+  .slides{display:flex;transition:transform .5s cubic-bezier(.2,.8,.2,1);will-change:transform}
+  .slide{min-width:100%;box-sizing:border-box;padding:0 0 8px}
+
   /* 카드 */
-  .card{position:relative;z-index:2;margin:10px auto;padding:20px 16px;max-width:520px;border:1px solid #2a3144;
+  .card{position:relative;margin:0 auto;padding:20px 16px;max-width:520px;border:1px solid #2a3144;
     border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));backdrop-filter:blur(2px)}
   .dear{margin-bottom:10px;color:#ffdede;padding-left:10px}
   .msg{font-family:'Gowun Dodum',sans-serif;font-size:clamp(15px,2.4vw,16px);line-height:1.75;white-space:pre-line;padding-left:35px}
-  .sig{margin-top:10px;color:#ffdede;margin-left:auto;width:100px}
+  .sig{margin-top:10px;color:#ffdede;margin-left:auto;text-align: right; padding-right: 10px;}
 
   /* 사람들 (카드 위) */
-  .people{position:fixed;inset:0;z-index:3;overflow:hidden}
+  .people{position:fixed;inset:0;z-index:4;overflow:hidden}
   .person{position:absolute;font-size:26px;cursor:pointer;user-select:none;
     transition:transform 1.2s ease,opacity 1.2s ease,left 1.2s ease,top 1.2s ease;animation:float 8s ease-in-out infinite}
   @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-15px)}100%{transform:translateY(0)}}
@@ -61,7 +66,7 @@
   .counter{position:fixed;left:10px;top:10px;font-size:12px;color:#b7c7e6;background:#111a2a;border:1px solid #23314a;
     padding:6px 9px;border-radius:10px;z-index:3}
 
-  /* 피날레 (오버레이는 클릭 통과) */
+  /* 피날레 */
   .final{display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:4;opacity:0;pointer-events:none;}
   .final.show{display:flex;opacity:1;transition:opacity .7s ease;pointer-events:none;}
   .final .bubble{
@@ -95,6 +100,59 @@
   .audio-toggle{position:fixed;right:12px;bottom:12px;width:44px;height:44px;border:1px solid #2a3a58;border-radius:12px;background:#0f1830cc;
     backdrop-filter:blur(6px);color:#cfe8ff;font-size:20px;line-height:44px;text-align:center;cursor:pointer;z-index:6;}
   .audio-toggle:active{transform:scale(.96)}
+
+  /* 작은 화면에서 화살표를 카드 안쪽으로 */
+  @media (max-width: 420px){
+    .arrow.prev{left:4px}
+    .arrow.next{right:4px}
+  }
+
+  /* ===================== Instagram-like Design Only ===================== */
+  /* 화살표: 인스타 스타일 (위치 설정은 기존 코드 유지) */
+  .arrow{
+    position: absolute;  z-index: 6;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px; height: 36px;
+    border: none; border-radius: 999px;
+    background: rgba(0,0,0,.35);
+    box-shadow: 0 2px 8px rgba(0,0,0,.35);
+    transition: background .2s ease, transform .12s ease;
+  }
+
+  /* 흰색 > < 모양 */
+  .arrow::before{ 
+    content:"";
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 14px; height: 14px;          /* 🔧 아이콘 크기 */
+    transform: translate(-50%, -50%);   /* 정확한 중앙 정렬 */
+    background: center / contain no-repeat
+      url('data:image/svg+xml;utf8,\<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" \stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"> \<path d="M9 6l6 6-6 6"/></svg>'); 
+  }
+
+  /* 화살표 위치 */
+  .arrow.prev{ left: 10px;/* 카드 안쪽으로 넣기 */ }
+  .arrow.next{ right: 10px;/* 카드 안쪽으로 넣기 */ }
+  .arrow.prev::before{ transform: translate(-50%, -50%) scaleX(-1); }  
+
+  /* 효과 */
+  .arrow:hover{ background: rgba(0,0,0,.5); opacity: .8; }
+  .arrow:active{ transform: translateY(-50%) scale(.95); }
+  .arrow[hidden]{ visibility:hidden; }
+
+  /* 작은 화면에서는 조금 더 붙여줌 */
+  @media (max-width:420px){
+    .arrow.prev{ left:4px }
+    .arrow.next{ right:4px }
+  }
+  .arrow:disabled { opacity:.35; pointer-events:none; }
+
+  /* 점 네비: 인스타 스타일 */ 
+  .dots{ display:flex; gap:6px; justify-content:center; margin-top:12px; } 
+  .dot{ width: 6px; height: 6px; border-radius: 999px; background: #a1a1a1; opacity: .6; border: none; transition: transform .2s ease, opacity .2s ease, background .2s ease; } 
+  .dot.active{ background: #9ff3ff; opacity: 1; transform: scale(1.15); }
+
 </style>
 </head>
 <body>
@@ -111,17 +169,66 @@
     <div class="sub">생일 우주에 접속했습니다.<br>빌런(👤) 10명을 퇴치하면 이벤트가 시작됩니다.</div>
   </header>
 
-  <section class="card">
-    <div class="dear">Dear 🐟</div>
-    <div class="msg">현익아, 생일 축하해🥳
-      맛있는 거 많~이 먹고🐷
-      즐겁고 행복한 하루 보내😊
-      카드를 직접 못 줘서 아쉽지만 맘에들면 좋겠다🤭
-      항상 내 하루의 끝에 있어줘서 고마워🥰
-      앞으로의 매일에도 웃음과 행복이 가득하길🌻
-      🎂Happy Birthday🎁
+  <!-- ===== 카드 캐러셀 ===== -->
+  <section class="carousel" id="carousel" aria-roledescription="carousel">
+    <!-- 화살표 (카드 위 겹침) -->
+    <button class="arrow prev" id="prevBtn" aria-label="이전 카드 보기"></button>
+    <button class="arrow next" id="nextBtn" aria-label="다음 카드 보기"></button>
+
+    <div class="slides" id="slides">
+      <!-- slide 1 -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="1 / 3">
+        <div class="card">
+          <div class="dear">Dear 🐟</div>
+          <div class="msg">현익아, 생일 축하해🥳
+                          맛있는 거 많~이 먹고🐷
+                          즐겁고 행복한 하루 보내😊
+                          카드를 직접 못 줘서 아쉽지만 맘에들면 좋겠다🤭
+                          항상 내 하루의 끝에 있어줘서 고마워🥰
+                          앞으로의 매일에도 웃음과 행복이 가득하길🌻
+                          🎂Happy Birthday🎁</div>
+          <div class="sig">From 🍄</div>
+        </div>
+      </div>
+
+      <!-- slide 2 -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="2 / 3">
+        <div class="card">
+          <div class="dear">Hidden Feature for Domi🐟</div>
+          <div class="msg">
+                          지구의 평화는 도미의 손 끝에 달렸다🌱🐱
+                          🌍를 클릭하면 빌런들을 태운 🚀이 발사됩니다😎
+                          🐟마음의 평화를 깨뜨리는 빌런 발생시,
+                          언제든 우주선을 발사해주세요😉
+                          
+                          <strong>* 도미를 위한 우주선은 무제한 제공 됩니다🚀</strong>
+                        
+          </div>
+          <div class="sig">— Secret Supporter 💃🧱</div>
+        </div>
+      </div>
+
+      <!-- slide 3 -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="3 / 3">
+        <div class="card">
+          <div class="dear">Dear 🐟</div>
+          <div class="msg">니하오 도미!
+                          생각처럼 모든 게 잘 풀리지 않아서 포기하려던 때,
+                          널 만나면서 모든 게 다시 시작된 것 같아.
+                          아직 갈 길이 멀지만, 내가 원하던 길을 찾은 만큼
+                          포기하지 않고 끝까지 해볼거야.
+                          항상 응원해줘서 고마워🥰
+                          나도 너에게 힘이 되는 사람이었으면 좋겠다😊
+                          네가 나에게 그런 존재인 것처럼!
+                          앞으로도 함께하는 시간들이 행복하고 즐겁기를💕
+                          생일 너무너무 축하해🥳🎂</div>
+          <div class="sig">From 🍄</div>
+        </div>
+      </div>
     </div>
-    <div class="sig">From 🍄</div>
+
+    <!-- 점 네비 -->
+    <div class="dots" id="dots" role="tablist" aria-label="카드 이동 점 네비게이션"></div>
   </section>
 
   <div class="people" id="people"></div>
@@ -139,8 +246,20 @@
 </div>
 
 <script>
+  // === GA4 이벤트 헬퍼 (gtag 또는 GTM 둘 다 대응) ===
+  window.track = function(event, params = {}){
+    try{
+      if (window.gtag) {
+        window.gtag('event', event, params);
+      } else if (window.dataLayer && Array.isArray(window.dataLayer)) {
+        window.dataLayer.push({ event, ...params });
+      }
+    }catch(e){}
+  };
+  
   /* ===== 유틸 ===== */
   const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
   const rand = (a,b)=>Math.random()*(b-a)+a;
   const vw = ()=>Math.max(document.documentElement.clientWidth||0, window.innerWidth||0);
   const vh = ()=>Math.max(document.documentElement.clientHeight||0, window.innerHeight||0);
@@ -160,6 +279,87 @@
     const size=rand(1.2,3.4); s.style.width=size+'px'; s.style.height=size+'px';
     s.style.animationDelay=(Math.random()*2)+'s'; stars.appendChild(s);
   }
+
+  /* ===== 카드 캐러셀 로직 ===== */
+  const slidesEl = $('#slides');
+  const slideEls = $$('#slides .slide');
+  const dotsEl = $('#dots');
+  const prevBtn = $('#prevBtn');
+  const nextBtn = $('#nextBtn');
+
+  let idx = 0;
+  const last = slideEls.length - 1;
+
+  // 점 생성
+  slideEls.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='dot'; d.type='button'; d.setAttribute('role','tab');
+    d.setAttribute('aria-label', `${i+1}번 카드로 이동`);
+    d.addEventListener('click', ()=>goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  let prevIdx = -1;
+  function render(){
+    slidesEl.style.transform = `translateX(${-idx*100}%)`;
+    $$('#dots .dot').forEach((d,i)=>d.classList.toggle('active', i===idx));
+    // 화살표 표시/숨김
+    prevBtn.toggleAttribute('hidden', idx === 0);
+    nextBtn.toggleAttribute('hidden', idx === last);
+    // 화살표 맨 앞, 맨 끝 비활성
+    prevBtn.disabled = (idx === 0); 
+    nextBtn.disabled = (idx === last);
+    // ARIA 현재 슬라이드 라벨 갱신
+    slideEls.forEach((s,i)=>s.setAttribute('aria-label', `${i+1} / ${last+1}`));
+    // GA 이벤트 트래킹
+    if (prevIdx !== idx){
+    track('carousel_slide', { index: idx+1, total: last+1 });
+    prevIdx = idx;
+  }
+  }
+  function goTo(i){ idx = clamp(i,0,last); render(); }
+  function prev(){ if(idx>0) { idx--; render(); } }
+  function next(){ if(idx<last){ idx++; render(); } }
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+
+  // 키보드 내비
+  window.addEventListener('keydown', (e)=>{
+    if (e.key==='ArrowLeft') prev();
+    else if (e.key==='ArrowRight') next();
+  });
+
+  // 터치/드래그 스와이프
+  (function swipeable(){
+    let startX=0, curX=0, dragging=false;
+    const threshold=40, lock=()=>slidesEl.style.transition='none', unlock=()=>slidesEl.style.transition='';
+    slidesEl.addEventListener('pointerdown',e=>{
+      dragging=true; startX=e.clientX; curX=startX; lock();
+      slidesEl.setPointerCapture?.(e.pointerId);
+    });
+    window.addEventListener('pointermove',e=>{
+      if(!dragging) return;
+      curX=e.clientX;
+      let dx=curX-startX;
+      if (idx === 0 && dx > 0) dx = 0;        // 첫 카드에서 오른쪽으로 밀면 무시
+      if (idx === last && dx < 0) dx = 0;     // 마지막 카드에서 왼쪽으로 밀면 무시
+      slidesEl.style.transform=`translateX(${(-idx*100)+(dx/vw()*100)}%)`;
+    }, {passive:false});
+    const end=()=>{
+      if(!dragging) return; dragging=false; unlock();
+      const dx=curX-startX;
+      if(Math.abs(dx)>threshold){
+        if(dx>0) prev(); else next();
+      } else {
+        render();
+      }
+    };
+    window.addEventListener('pointerup', end);
+    window.addEventListener('pointercancel', end);
+  })();
+
+  render();
 
   /* ===== 사람 ===== */
   const peopleWrap=$('.people'), earth=$('#earth'), counter=$('#counter');
@@ -234,7 +434,7 @@
       confettiBurst();
       $('#soundTip')?.remove();
 
-      // 🔧 사람 레이어 클릭통과 (또는 peopleWrap.remove()로 완전 제거해도 OK)
+      // 사람 레이어 클릭통과
       peopleWrap.style.pointerEvents = 'none';
 
       // 지구 추가 발사 활성화
@@ -294,7 +494,7 @@
   window.addEventListener('resize', ()=>{
     people.forEach(p=>{ if(!p.isConnected) return;
       const r=p.getBoundingClientRect();
-      const nx=clamp(r.left, SAFE, vw()-SAFE-r.width);
+      const nx=clamp(r.left, 80, vw()-80-r.width);
       const ny=clamp(r.top , 120 , vh()-140-r.height);
       p.style.left=nx+'px'; p.style.top=ny+'px';
     });
