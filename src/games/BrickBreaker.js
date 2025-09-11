@@ -198,12 +198,12 @@ export default function BrickBreaker() {
     // 키보드 이벤트 핸들러
     const handleRestart = () => {
         // GA 리스타트 추적
-        if (window.gtag) {
-            window.gtag('event', 'BB_game_restart', {
-                event_category: 'Game',
-                event_label: 'BrickBreaker'
-            });
-        }
+        // if (window.gtag) {
+        //     window.gtag('event', 'BB_game_restart', {
+        //         event_category: 'Game',
+        //         event_label: 'BrickBreaker'
+        //     });
+        // }
 
         window.location.reload();
     }
@@ -240,12 +240,12 @@ export default function BrickBreaker() {
             }
             if (gameClear) {
                 // GA 게임 클리어 추적
-                if (window.gtag) {
-                    window.gtag('event', 'BB_game_clear', {
-                        event_category: 'Game',
-                        event_label: 'BrickBreaker'
-                    });
-                }
+                // if (window.gtag) {
+                //     window.gtag('event', 'BB_game_clear', {
+                //         event_category: 'Game',
+                //         event_label: 'BrickBreaker'
+                //     });
+                // }
 
                 // 클리어 메시지
                 drawEndMessage(ctx, "🎉 CLEAR!!");
