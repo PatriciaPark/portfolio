@@ -1,4 +1,5 @@
 import { useLanguage } from "../context/LanguageContext";
+import React, { useEffect } from "react";
 
 const projects = [
   {
@@ -163,6 +164,17 @@ const colors = ["text-rose-400", "text-lime-400", "text-amber-400", "text-indigo
 
 export default function Projects() {
   const { language } = useLanguage();
+
+  // 페이지 진입 시 GA 이벤트 전송
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Projects',
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+    }
+  }, []);
 
   return (
     <main className="min-h-screen bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 p-6">

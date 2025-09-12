@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
@@ -285,6 +285,17 @@ const tabData = {
 export default function KoreanContentPage() {
   const [activeTab, setActiveTab] = useState("basicExpressions");
   const { language } = useLanguage();
+
+  // 페이지 진입 시 GA 이벤트 전송
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Korean',
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 px-4 py-8">

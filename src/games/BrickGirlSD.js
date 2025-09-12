@@ -349,6 +349,17 @@ export default function Game() {
         return () => window.removeEventListener("resize", updateSize);
     }, []);
 
+    // 페이지 진입 시 GA 이벤트 전송
+    useEffect(() => {
+    if (window.gtag) {
+        window.gtag('event', 'page_view', {
+        page_title: 'BrickGirlSD',
+        page_location: window.location.href,
+        page_path: window.location.pathname
+        });
+    }
+    }, []);
+
     return (
         <div className="flex flex-col items-center mt-6">
             <h2 className="font-press font-bold mb-4 text-rose-400">Brick Girl:Space Defense</h2>

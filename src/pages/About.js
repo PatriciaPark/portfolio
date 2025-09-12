@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function About() {
@@ -93,6 +93,17 @@ export default function About() {
       </>,
     ],
   };
+
+  // 페이지 진입 시 GA 이벤트 전송
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'About',
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+    }
+  }, []);
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12 text-gray-800 dark:text-gray-100">

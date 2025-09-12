@@ -1,5 +1,6 @@
 import { useLanguage } from "../context/LanguageContext";
 import { motion } from "framer-motion";
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import ParticlesBackground from "../components/ParticlesBackground";
 import MindMapPage from "./MindMap";
@@ -9,6 +10,17 @@ import BrickGirlRT from "../games/BrickGirlRT";
 
 export default function Home() {
   const { language } = useLanguage();
+
+  // 페이지 진입 시 GA 이벤트 전송
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Home',
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+    }
+  }, []);
 
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-start bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 overflow-hidden">
