@@ -4,7 +4,20 @@ import React, { useEffect } from "react";
 const projects = [
   {
     title: {
-      en: "JobPilot Biz - AI-powered Job Matching Service",
+      en: "JobPilot - AI-powered Job Application Automation Platform",
+      ko: "JobPilot - AI 기반 취업 관리 플랫폼"
+    },
+    description: {
+      en: "An intelligent job application automation platform that leverages AI to analyze resumes, generate personalized cover letters, match job opportunities, and prepare for interviews.",
+      ko: "AI를 활용해 이력서 분석, 맞춤형 커버레터 생성, 채용공고 매칭, 면접 준비를 제공하는 지능형 취업 관리 플랫폼."
+    },
+    role: "Full-Stack Developer (Solo)",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI", "Supabase", "Vercel"],
+    link: "https://jobpilotabc.com/"
+  },
+  {
+    title: {
+      en: "JobPilot Biz - AI-powered Job Matching Service for Businesses",
       ko: "JobPilot Biz - AI 기반 맞춤 취업 서비스"
     },
     description: {
