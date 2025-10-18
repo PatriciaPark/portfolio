@@ -83,6 +83,15 @@ const tabContent = {
     ],
     novel: [
         {
+            title: { en: "『Brick Girl Universe』", ko: "『브릭걸 유니버스』" },
+            description: {
+                en: "An epic sci-fi fantasy saga about power, creation, and harmony.",
+                ko: "힘과 창조, 그리고 조화를 그린 장대한 SF 판타지 서사"
+            },
+            status: { en: "In Progress", ko: "작업중" },
+            link: ""
+        },
+        {
             title: { en: "『You Are Not on Earth』", ko: "『너는 지구에 없어』" },
             description: {
                 en: "A romance fantasy novel project in progress.",
