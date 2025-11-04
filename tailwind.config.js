@@ -34,14 +34,14 @@ module.exports = {
     },
   },
   plugins: [],
-  safelist: [
-    {
-      pattern: /dark:shadow-\[.*\]/,
-    },
-    {
-      pattern: /dark:drop-shadow-.*/, // ← 이거 추가!!!
-    }
-  ],
+  // safelist: [
+  //   {
+  //     pattern: /dark:shadow-\[.*\]/,
+  //   },
+  //   {
+  //     pattern: /dark:drop-shadow-.*/,
+  //   }
+  // ],
 
 };
 

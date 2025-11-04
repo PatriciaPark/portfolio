@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ERMVPRYRJX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ERMVPRYRJX');
+</script>
+<title>HBD Hyun Ik</title>
+<style>
+  :root{ --bg:#0a0f1a; --star:#cfe8ff; --accent:#ffd166; --text:#f6f7fb; --soft:#9fb4d1; }
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);
+    font-family:"Press Start 2P",ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Noto Sans,Apple SD Gothic Neo,"맑은 고딕",Helvetica,Arial,sans-serif;}
+  .scene{position:relative;min-height:100dvh;overflow:hidden;}
+
+  /* 별 */
+  .stars{position:absolute;inset:0;overflow:hidden;z-index:0}
+  .star{position:absolute;width:2px;height:2px;background:var(--star);opacity:.7;border-radius:50%;animation:twinkle 2.4s infinite}
+  @keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
+
+  /* 고정 요소 */
+  .sun{position:fixed;right:12px;top:10px;font-size:28px;filter:drop-shadow(0 0 8px #ffd166aa);animation:pulse 2.2s infinite}
+  .earth{position:fixed;left:12px;bottom:12px;font-size:30px;filter:drop-shadow(0 0 6px #97d2ff88);transform-origin:center center}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  .earth.launchable{cursor:pointer;animation:pulse 1.4s infinite}
+
+  /* 헤더 */
+  .header{position:relative;z-index:2;padding:78px 10px 16px;text-align:center;}
+  .sub{margin-top:20px;color:var(--soft);font-family:'IBM Plex Sans KR',sans-serif;}
+
+  /* 네온 타이틀 */
+  .neon{
+    --neon:#9ff3ff;
+    color:var(--neon);
+    filter:drop-shadow(0 0 18px rgba(159,243,255,.45));
+    font-family:'Orbitron',sans-serif;
+    font-weight:800;
+    font-size:clamp(23px,4vw,40px);
+    letter-spacing:.02em;
+    text-shadow:
+      0 0 6px rgba(159,243,255,.85),
+      0 0 12px rgba(159,243,255,.55),
+      0 0 20px rgba(108,222,238,.35),
+      0 0 36px rgba(108,222,238,.25);
+  }
+
+  /* ===== 카드 캐러셀 ===== */
+  .carousel{position:relative;z-index:4;margin:10px auto;max-width:560px;overflow:hidden;}
+  .slides{display:flex;transition:transform .5s cubic-bezier(.2,.8,.2,1);will-change:transform}
+  .slide{min-width:100%;box-sizing:border-box;padding:0 0 8px}
+
+  /* 카드 */
+  .card{position:relative;margin:0 auto;padding:20px 16px;max-width:520px;border:1px solid #2a3144;
+    border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));backdrop-filter:blur(2px)}
+  .dear{margin-bottom:10px;color:#ffdede;padding-left:10px}
+  .msg{font-family:'Gowun Dodum',sans-serif;font-size:clamp(15px,2.4vw,16px);line-height:1.75;white-space:pre-line;padding-left:35px}
+  .sig{margin-top:10px;color:#ffdede;margin-left:auto;text-align: right; padding-right: 10px;}
+
+  /* 사람들 (카드 위) */
+  .people{position:fixed;inset:0;z-index:4;overflow:hidden}
+  .person{position:absolute;font-size:26px;cursor:pointer;user-select:none;
+    transition:transform 1.2s ease,opacity 1.2s ease,left 1.2s ease,top 1.2s ease;animation:float 8s ease-in-out infinite}
+  @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-15px)}100%{transform:translateY(0)}}
+  .person.to-earth{opacity:.2;transform:scale(.7)}
+  .counter{position:fixed;left:10px;top:10px;font-size:12px;color:#b7c7e6;background:#111a2a;border:1px solid #23314a;
+    padding:6px 9px;border-radius:10px;z-index:3}
+
+  /* 피날레 */
+  .final{display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:4;opacity:0;pointer-events:none;}
+  .final.show{display:flex;opacity:1;transition:opacity .7s ease;pointer-events:none;}
+  .final .bubble{
+    position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+    padding:16px 20px;border-radius:14px;background:#0f1830cc;border:1px solid #2a3a58;backdrop-filter:blur(6px);
+    font-size:clamp(18px,4vw,24px);text-align:center;line-height:1.6;cursor:grab;user-select:none;
+    box-shadow:0 0 16px rgba(160,200,255,.35), 0 0 32px rgba(160,200,255,.15);
+    box-sizing:border-box; pointer-events:auto;
+    min-width:260px; white-space:normal; word-break:keep-all; touch-action:none;
+    color:#9ff3ff; font-family:'IBM Plex Sans KR',sans-serif;
+  }
+  .final .bubble.glow{animation:glow 2.4s ease-in-out infinite alternate}
+  @keyframes glow{from{box-shadow:0 0 16px rgba(160,200,255,.35),0 0 32px rgba(160,200,255,.15)}to{box-shadow:0 0 24px rgba(160,200,255,.55),0 0 48px rgba(160,200,255,.25)}}
+  .final .bubble::before{content:"";position:absolute;inset:-18px;border-radius:inherit;z-index:-1;
+    background:radial-gradient(circle at 50% 50%, rgba(160,200,255,.25), rgba(160,200,255,0) 60%);filter:blur(8px);}
+
+  /* 로켓 & 폭발 */
+  .rocket{position:fixed;left:24px;bottom:34px;font-size:28px;transform:translate(0,0) rotate(-12deg);opacity:0;z-index:4;transition:opacity .2s ease}
+  .rocket.launch{opacity:1;animation:launch var(--rocket-duration, 2400ms) cubic-bezier(.25,.8,.25,1) forwards}
+  @keyframes launch{to{transform:translate(var(--tx),var(--ty)) rotate(-12deg)}}
+  .explosion{position:fixed;left:0;top:0;transform:translate(-50%,-50%) scale(.6);font-size:36px;z-index:5;opacity:0;animation:boom .9s ease-out forwards}
+  @keyframes boom{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(.8)}}
+
+  /* 폭죽 */
+  .burst{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:4}
+  .confetti{position:absolute;font-size:22px;animation:pop 1.8s ease forwards;opacity:0}
+  @keyframes pop{0%{transform:translate(0,0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1);opacity:0}}
+
+  /* 사운드 안내 & 토글 */
+  .sound-tip{position:fixed;right:10px;bottom:10px;font-size:12px;color:#9fb4d1;background:#0f1830;border:1px solid #2a3a58;border-radius:10px;padding:6px 10px;z-index:5}
+  .audio-toggle{position:fixed;right:12px;bottom:12px;width:44px;height:44px;border:1px solid #2a3a58;border-radius:12px;background:#0f1830cc;
+    backdrop-filter:blur(6px);color:#cfe8ff;font-size:20px;line-height:44px;text-align:center;cursor:pointer;z-index:6;}
+  .audio-toggle:active{transform:scale(.96)}
+
+  /* 작은 화면에서 화살표를 카드 안쪽으로 */
+  @media (max-width: 420px){
+    .arrow.prev{left:4px}
+    .arrow.next{right:4px}
+  }
+
+  /* ===================== Instagram-like Design Only ===================== */
+  /* 화살표: 인스타 스타일 (위치 설정은 기존 코드 유지) */
+  .arrow{
+    position: absolute;  z-index: 6;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px; height: 36px;
+    border: none; border-radius: 999px;
+    background: rgba(0,0,0,.35);
+    box-shadow: 0 2px 8px rgba(0,0,0,.35);
+    transition: background .2s ease, transform .12s ease;
+  }
+
+  /* 흰색 > < 모양 */
+  .arrow::before{ 
+    content:"";
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 14px; height: 14px;          /* 🔧 아이콘 크기 */
+    transform: translate(-50%, -50%);   /* 정확한 중앙 정렬 */
+    background: center / contain no-repeat
+      url('data:image/svg+xml;utf8,\<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" \stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"> \<path d="M9 6l6 6-6 6"/></svg>'); 
+  }
+
+  /* 화살표 위치 */
+  .arrow.prev{ left: 10px;/* 카드 안쪽으로 넣기 */ }
+  .arrow.next{ right: 10px;/* 카드 안쪽으로 넣기 */ }
+  .arrow.prev::before{ transform: translate(-50%, -50%) scaleX(-1); }  
+
+  /* 효과 */
+  .arrow:hover{ background: rgba(0,0,0,.5); opacity: .8; }
+  .arrow:active{ transform: translateY(-50%) scale(.95); }
+  .arrow[hidden]{ visibility:hidden; }
+
+  /* 작은 화면에서는 조금 더 붙여줌 */
+  @media (max-width:420px){
+    .arrow.prev{ left:4px }
+    .arrow.next{ right:4px }
+  }
+  .arrow:disabled { opacity:.35; pointer-events:none; }
+
+  /* 점 네비: 인스타 스타일 */ 
+  .dots{ display:flex; gap:6px; justify-content:center; margin-top:12px; } 
+  .dot{ width: 6px; height: 6px; border-radius: 999px; background: #a1a1a1; opacity: .6; border: none; transition: transform .2s ease, opacity .2s ease, background .2s ease; } 
+  .dot.active{ background: #9ff3ff; opacity: 1; transform: scale(1.15); }
+
+</style>
+</head>
+<body>
+<div class="scene" id="scene">
+  <div class="stars" id="stars"></div>
+
+  <div class="sun" aria-hidden="true">☀️</div>
+  <div class="earth" id="earth" aria-label="지구">🌍</div>
+  <div class="counter" id="counter">👤 0 / 10</div>
+  <button id="audioToggle" class="audio-toggle" aria-pressed="false" aria-label="Sound off">🔇</button>
+
+  <header class="header">
+    <div class="neon">🫧Secret Access for Domi🐟</div>
+    <div class="sub">생일 우주에 접속했습니다.<br>빌런(👤) 10명을 퇴치하면 이벤트가 시작됩니다.</div>
+  </header>
+
+  <!-- ===== 카드 캐러셀 ===== -->
+  <section class="carousel" id="carousel" aria-roledescription="carousel">
+    <!-- 화살표 (카드 위 겹침) -->
+    <button class="arrow prev" id="prevBtn" aria-label="이전 카드 보기"></button>
+    <button class="arrow next" id="nextBtn" aria-label="다음 카드 보기"></button>
+
+    <div class="slides" id="slides">
+      <!-- slide 0 -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="1 / 4">
+        <div class="card">
+          <div class="dear">🌱도미냥의 평화로운 하루🐱</div>
+          <div class="msg" style="text-align: center;">
+            냥
+            냥냥
+            냥냥냥
+            냥냥냥냥
+            <strong style="color: #9ff3ff;">✉️ 새 편지가 도착했습니다 👉</strong>
+            냥냥냥냥냥
+            냥냥냥냥냥냥
+            냐냐냐냐냐냐냥!
+
+          </div>
+          <div class="sig">🎶뻐끔🫧🐟</div>
+        </div>
+      </div>
+
+      <!-- slide 1 -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="1 / 4">
+        <div class="card">
+          <div class="dear">🫧🐟</div>
+          <div class="msg">도미 안냥🌱🐱
+            어느 때보다도 긴 대화를 나눴고, 처음으로 서로의 속마음을 털어놓은 것 같아. 처음 영상통화를 했고, 그렇게 알고 싶었던 카톡도 알게 되었는데, 마음은 텅 비어버린 느낌이라 이상하다ㅎㅎ
+            근데 먼저 이야기 꺼내줘서, 그리고 너의 입장과 생각을 알려줘서 고맙게 생각해. 그러니까 미안해 할 필요는 없어.
+            나도 항상 너와 친구로 오래오래 지내는 걸 원하긴 했는데, 좋아했던 사람과 친구가 되어 본 적은 한 번도 없어서 사실 어떻게 될지는 잘 모르겠어.
+            늘 그렇듯 시간이 해결해 줄거라고 생각해.
+            아마 너에 대한 감정이 정리 되는 날, 이 페이지가 없어지겠지. 그리고 그때 친구로 계속 지낼 수 있을지 없을지도 알게 될거야.
+            만약 친구로 지낼 수 없다고 하더라도, 너에게 고마웠던 마음은 변함없을거야.
+            네가 항상 행복하고 평안했으면 좋겠다😊
+          </div>
+          <div class="sig">2025. 10. 18. 🍄</div>
+        </div>
+      </div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="1 / 4">
+        <div class="card">
+          <div class="dear">🫧🐟</div>
+          <div class="msg">오늘 너한테 팔로워 300명 축하 받을 거라고 상상도 못했는데, 그보다도 네가 301번째 팔로워가 되어준게 진짜 너무 놀랍고, 감동이고, 기뻤어🥰
+            넌 팔로잉 한 명도 없었는데, 내가!!! 첫 번째가 된거잖아?! 정말 이 기분은 말로 표현할 수 없어😆 
+            너!!무!!! 좋아!!!!!
+            그치만~ 이걸 바로 말해버리면 넌 또 부끄러워서 도망갈테니깐 여기에 몰래 남길거야🤭
+            누군가 열받게 해서 우주선 날리고 싶어질 때쯤에 읽으려나?ㅎㅎ 특별한 하루로 만들어줘서 고마워😊
+          </div>
+          <div class="sig">2025. 9. 3. 🍄</div>
+        </div>
+      </div>
+
+      <!-- slide 2 -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="2 / 4">
+        <div class="card">
+          <div class="dear">Hidden Feature for Domi🐟</div>
+          <div class="msg">
+                          지구의 평화는 도미의 손 끝에 달렸다🌱🐱
+                          🌍를 클릭하면 빌런들을 태운 🚀이 발사됩니다😎
+                          🐟마음의 평화를 깨뜨리는 빌런 발생시,
+                          언제든 우주선을 발사해주세요😉
+                          
+                          <strong>* 도미를 위한 우주선은 무제한 제공 됩니다🚀</strong>
+                        
+          </div>
+          <div class="sig">— Secret Supporter 💃🧱</div>
+        </div>
+      </div>
+
+      <!-- slide 3 -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="3 / 4">
+        <div class="card">
+          <div class="dear">Dear 🐟</div>
+          <div class="msg">
+                          현익아, 생일 축하해🥳
+                          맛있는 거 많~이 먹고🐷
+                          즐겁고 행복한 하루 보내😊
+                          카드를 직접 못 줘서 아쉽지만 맘에들면 좋겠다🤭
+                          항상 내 하루의 끝에 있어줘서 고마워🥰
+                          앞으로의 매일에도 웃음과 행복이 가득하길🌻
+                          🎂Happy Birthday🎁
+
+            </div>
+          <div class="sig">From 🍄</div>
+        </div>
+      </div>
+      
+      <!-- slide 4 -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="4 / 4">
+        <div class="card">
+          <div class="dear">Dear 🐟</div>
+          <div class="msg">니하오 도미!
+                          생각처럼 모든 게 잘 풀리지 않아서 포기하려던 때,
+                          널 만나면서 모든 게 다시 시작된 것 같아.
+                          아직 갈 길이 멀지만, 내가 원하던 길을 찾은 만큼
+                          포기하지 않고 끝까지 해볼거야.
+                          항상 응원해줘서 고마워🥰
+                          나도 너에게 힘이 되는 사람이었으면 좋겠다😊
+                          네가 나에게 그런 존재인 것처럼!
+                          앞으로도 함께하는 시간들이 행복하고 즐겁기를💕
+                          생일 너무너무 축하해🥳🎂</div>
+          <div class="sig">From 🍄</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 점 네비 -->
+    <div class="dots" id="dots" role="tablist" aria-label="카드 이동 점 네비게이션"></div>
+  </section>
+
+  <div class="people" id="people"></div>
+
+  <div class="rocket" id="rocket">🚀</div>
+  <div class="final" id="final"><div class="bubble">Always cheering for you, Hyun Ik 💕</div></div>
+
+  <div class="burst" id="burst"></div>
+
+  <!-- Happy Birthday to You -->
+  <!-- <iframe id="bgm" data-video-id="bZ7Nh4K9gII" width="0" height="0"
+    src="https://www.youtube.com/embed/bZ7Nh4K9gII?enablejsapi=1&autoplay=1&mute=1&playsinline=1&loop=1&playlist=bZ7Nh4K9gII&rel=0&modestbranding=1"
+    frameborder="0" allow="autoplay; encrypted-media"></iframe> -->
+  
+  <!-- Domi domi doremi Playlist: https://www.youtube.com/playlist?list=PLtuRlaWtDzbsva8iJAkP5UzvmiGZckNA1 -->
+  <iframe id="bgm" width="0" height="0"
+    src="https://www.youtube.com/embed?enablejsapi=1&listType=playlist&list=PLtuRlaWtDzbsva8iJAkP5UzvmiGZckNA1&autoplay=1&mute=1&playsinline=1&loop=1&rel=0&modestbranding=1&index=0"
+    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+
+  <div class="sound-tip" id="soundTip">🔊 자동재생이 안 들리면 화면을 한 번 터치해 주세요.</div>
+</div>
+
+<script>
+  /* ===== 유틸 ===== */
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+  const rand = (a,b)=>Math.random()*(b-a)+a;
+  const vw = ()=>Math.max(document.documentElement.clientWidth||0, window.innerWidth||0);
+  const vh = ()=>Math.max(document.documentElement.clientHeight||0, window.innerHeight||0);
+  const clamp=(n,min,max)=>Math.min(Math.max(n,min),max);
+  const center=el=>{const r=el.getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2,w:r.width,h:r.height}};
+
+  /* ===== 설정 ===== */
+  const PERSON_COUNT = 10;
+  const EXTRA_DELAY  = 800;
+  const ROCKET_MS    = 4800;  // ← 로켓 속도
+
+  /* ===== 별 ===== */
+  const stars = $('#stars'); const STAR_COUNT = 140;
+  for(let i=0;i<STAR_COUNT;i++){
+    const s=document.createElement('div'); s.className='star';
+    s.style.left=rand(0,100)+'%'; s.style.top=rand(0,100)+'%';
+    const size=rand(1.2,3.4); s.style.width=size+'px'; s.style.height=size+'px';
+    s.style.animationDelay=(Math.random()*2)+'s'; stars.appendChild(s);
+  }
+
+  /* ===== 카드 캐러셀 로직 ===== */
+  const slidesEl = $('#slides');
+  const slideEls = $$('#slides .slide');
+  const dotsEl = $('#dots');
+  const prevBtn = $('#prevBtn');
+  const nextBtn = $('#nextBtn');
+
+  let idx = 0;
+  const last = slideEls.length - 1;
+
+  // 점 생성
+  slideEls.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='dot'; d.type='button'; d.setAttribute('role','tab');
+    d.setAttribute('aria-label', `${i+1}번 카드로 이동`);
+    d.addEventListener('click', ()=>goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  let prevIdx = -1;
+  function render(){
+    slidesEl.style.transform = `translateX(${-idx*100}%)`;
+    $$('#dots .dot').forEach((d,i)=>d.classList.toggle('active', i===idx));
+    // 화살표 표시/숨김
+    prevBtn.toggleAttribute('hidden', idx === 0);
+    nextBtn.toggleAttribute('hidden', idx === last);
+    // 화살표 맨 앞, 맨 끝 비활성
+    prevBtn.disabled = (idx === 0); 
+    nextBtn.disabled = (idx === last);
+    // ARIA 현재 슬라이드 라벨 갱신
+    slideEls.forEach((s,i)=>s.setAttribute('aria-label', `${i+1} / ${last+1}`));
+  }
+  function goTo(i){ idx = clamp(i,0,last); render(); }
+  function prev(){ if(idx>0) { idx--; render(); } }
+  function next(){ if(idx<last){ idx++; render(); } }
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+
+  // 키보드 내비
+  window.addEventListener('keydown', (e)=>{
+    if (e.key==='ArrowLeft') prev();
+    else if (e.key==='ArrowRight') next();
+  });
+
+  // 터치/드래그 스와이프
+  (function swipeable(){
+    let startX=0, curX=0, dragging=false;
+    const threshold=40, lock=()=>slidesEl.style.transition='none', unlock=()=>slidesEl.style.transition='';
+    slidesEl.addEventListener('pointerdown',e=>{
+      dragging=true; startX=e.clientX; curX=startX; lock();
+      slidesEl.setPointerCapture?.(e.pointerId);
+    });
+    window.addEventListener('pointermove',e=>{
+      if(!dragging) return;
+      curX=e.clientX;
+      let dx=curX-startX;
+      if (idx === 0 && dx > 0) dx = 0;        // 첫 카드에서 오른쪽으로 밀면 무시
+      if (idx === last && dx < 0) dx = 0;     // 마지막 카드에서 왼쪽으로 밀면 무시
+      slidesEl.style.transform=`translateX(${(-idx*100)+(dx/vw()*100)}%)`;
+    }, {passive:false});
+    const end=()=>{
+      if(!dragging) return; dragging=false; unlock();
+      const dx=curX-startX;
+      if(Math.abs(dx)>threshold){
+        if(dx>0) prev(); else next();
+      } else {
+        render();
+      }
+    };
+    window.addEventListener('pointerup', end);
+    window.addEventListener('pointercancel', end);
+  })();
+
+  render();
+
+  /* ===== 사람 ===== */
+  const peopleWrap=$('.people'), earth=$('#earth'), counter=$('#counter');
+  const SAFE=80; let rescued=0; const people=[];
+  function spawnPerson(){
+    const p=document.createElement('div'); p.className='person'; p.textContent='👤';
+    p.style.left=rand(SAFE, vw()-SAFE)+'px';
+    p.style.top =rand(120, vh()-140)+'px';
+    p.style.animationDelay=rand(0,3)+'s';
+    p.addEventListener('click', ()=>sendToEarth(p));
+    peopleWrap.appendChild(p); people.push(p);
+  }
+  for(let i=0;i<PERSON_COUNT;i++) spawnPerson();
+
+  function earthCenter(){ const r=earth.getBoundingClientRect(); return {x:r.left+r.width/2,y:r.top+r.height/2}; }
+
+  let launchScheduled=false;
+
+  function sendToEarth(node){
+    if(node.classList.contains('to-earth')) return;
+    const rect=node.getBoundingClientRect(); const ec=earthCenter();
+    requestAnimationFrame(()=>{
+      node.classList.add('to-earth');
+      node.style.left=(ec.x-rect.width/2)+'px';
+      node.style.top =(ec.y-rect.height/2)+'px';
+      node.style.opacity='.15';
+    });
+    rescued++; counter.textContent=`👤 ${rescued} / ${PERSON_COUNT}`;
+    const onEnd=()=>{ node.removeEventListener('transitionend',onEnd); node.remove();
+      if(rescued===PERSON_COUNT && !launchScheduled){ launchScheduled=true; setTimeout(launchSequence,EXTRA_DELAY); }
+    };
+    node.addEventListener('transitionend', onEnd);
+  }
+
+  /* ===== 지구 클릭 추가 발사 ===== */
+  let earthLaunchArmed=false, earthLaunchCooldown=false;
+  earth.addEventListener('click', ()=>{
+    if(!earthLaunchArmed || earthLaunchCooldown) return;
+    earthLaunchCooldown=true; spawnExtraRocket(); setTimeout(()=>earthLaunchCooldown=false,400);
+  });
+
+  /* ===== 로켓/피날레 ===== */
+  const sun=$('.sun'), rocket=$('#rocket'), final=$('#final'), burst=$('#burst');
+
+  function launchSequence(){
+    const ec=center(earth), sc=center(sun);
+
+    // 로켓 출발 = 지구 중심
+    const rSize=28;
+    rocket.style.left=(ec.x - rSize/2)+'px';
+    rocket.style.top =(ec.y - rSize/2)+'px';
+    rocket.style.bottom='auto';
+
+    // 이동량 + 시간
+    const dx=sc.x-ec.x, dy=sc.y-ec.y;
+    rocket.style.setProperty('--tx', `${dx}px`);
+    rocket.style.setProperty('--ty', `${dy}px`);
+    rocket.style.setProperty('--rocket-duration', `${ROCKET_MS}ms`);
+
+    rocket.classList.add('launch');
+
+    rocket.addEventListener('animationend', ()=>{
+      rocket.style.opacity='0';
+      const ex=document.createElement('div');
+      ex.className='explosion'; ex.textContent='💥';
+      ex.style.left=`${sc.x}px`; ex.style.top=`${sc.y}px`;
+      document.body.appendChild(ex); setTimeout(()=>ex.remove(),900);
+
+      // 피날레 UI
+      final.classList.add('show');
+      initBubbleDrag();
+      confettiBurst();
+      $('#soundTip')?.remove();
+
+      // 사람 레이어 클릭통과
+      peopleWrap.style.pointerEvents = 'none';
+
+      // 지구 추가 발사 활성화
+      earthLaunchArmed = true;
+      earth.classList.add('launchable');
+    }, {once:true});
+  }
+
+  function spawnExtraRocket(){
+    const ec=center(earth), sc=center(sun);
+    const r=document.createElement('div'); r.className='rocket'; r.textContent='🚀'; document.body.appendChild(r);
+    const rSize=28;
+    r.style.left=(ec.x - rSize/2)+'px'; r.style.top=(ec.y - rSize/2)+'px'; r.style.bottom='auto';
+    const dx=sc.x-ec.x, dy=sc.y-ec.y;
+    r.style.setProperty('--tx', `${dx}px`);
+    r.style.setProperty('--ty', `${dy}px`);
+    r.style.setProperty('--rocket-duration', `${ROCKET_MS}ms`);
+    r.classList.add('launch');
+    r.addEventListener('animationend', ()=>{
+      r.style.opacity='0';
+      const ex=document.createElement('div'); ex.className='explosion'; ex.textContent='💥';
+      ex.style.left=`${sc.x}px`; ex.style.top=`${sc.y}px`; document.body.appendChild(ex);
+      setTimeout(()=>ex.remove(),900); setTimeout(()=>r.remove(),50);
+    }, {once:true});
+  }
+
+  function confettiBurst(){
+    const EMOJIS=['🎉','🎈','⭐️','🫧','🌟','✨','💙','🌻','🐟','🎶','🌱','🐱','🌙','🐡','🐬','🐳','🎂','🎁'];
+    for(let i=0;i<26;i++){
+      const c=document.createElement('div'); c.className='confetti';
+      c.textContent=EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
+      const angle=rand(0,2*Math.PI), dist=rand(80,220);
+      c.style.setProperty('--dx', Math.cos(angle)*dist+'px');
+      c.style.setProperty('--dy', Math.sin(angle)*dist+'px');
+      c.style.left='0px'; c.style.top='0px'; burst.appendChild(c);
+      setTimeout(()=>c.style.opacity='1',10); setTimeout(()=>c.remove(),3600);
+    }
+  }
+
+  /* ===== 오디오 ===== */
+  const bgm=$('#bgm'); let audioArmed=false;
+  function ytCmd(func,args=[]){ bgm.contentWindow?.postMessage(JSON.stringify({event:'command',func,args}), '*'); }
+
+  const audioBtn = $('#audioToggle'); let audioOn=false;
+  function updateAudioIcon(){ audioBtn.textContent=audioOn?'🔊':'🔇'; audioBtn.setAttribute('aria-pressed', audioOn?'true':'false'); }
+  function armAudio(){ if(audioArmed) return; audioArmed=true; ytCmd('unMute'); ytCmd('playVideo'); audioOn=true; updateAudioIcon(); $('#soundTip')?.remove();
+    window.removeEventListener('pointerdown',armAudio); window.removeEventListener('keydown',armAudio); }
+  window.addEventListener('pointerdown',armAudio); window.addEventListener('keydown',armAudio);
+  function toggleAudio(){
+    if(!audioArmed){ armAudio(); return; }
+    audioOn=!audioOn; audioOn?(ytCmd('unMute'),ytCmd('playVideo')):(ytCmd('mute'),ytCmd('pauseVideo')); updateAudioIcon();
+  }
+  audioBtn.addEventListener('click', toggleAudio);
+  updateAudioIcon();
+
+  /* 리사이즈: 사람 위치 보정 */
+  window.addEventListener('resize', ()=>{
+    people.forEach(p=>{ if(!p.isConnected) return;
+      const r=p.getBoundingClientRect();
+      const nx=clamp(r.left, 80, vw()-80-r.width);
+      const ny=clamp(r.top , 120 , vh()-140-r.height);
+      p.style.left=nx+'px'; p.style.top=ny+'px';
+    });
+  });
+
+  /* 피날레 메시지 드래그 */
+  function initBubbleDrag(){
+    const bubble=$('.final .bubble'); if(!bubble) return; bubble.classList.add('glow');
+    let dragging=false, offX=0, offY=0; const margin=8;
+    const clip=(n,min,max)=>Math.min(Math.max(n,min),max);
+
+    bubble.addEventListener('pointerdown',e=>{
+      dragging=true; bubble.setPointerCapture?.(e.pointerId);
+      const r=bubble.getBoundingClientRect();
+      bubble.style.width=r.width+'px';  // iOS 폭 고정
+      bubble.style.left=r.left+'px'; bubble.style.top=r.top+'px'; bubble.style.transform='none';
+      offX=e.clientX-r.left; offY=e.clientY-r.top; bubble.style.cursor='grabbing';
+    });
+    window.addEventListener('pointermove',e=>{
+      if(!dragging) return; const w=bubble.offsetWidth,h=bubble.offsetHeight;
+      let nx=e.clientX-offX, ny=e.clientY-offY;
+      nx=clip(nx, margin, window.innerWidth-w-margin);
+      ny=clip(ny, margin, window.innerHeight-h-margin);
+      bubble.style.left=nx+'px'; bubble.style.top=ny+'px';
+    }, {passive:false});
+    window.addEventListener('pointerup',()=>{ dragging=false; bubble.style.cursor='grab'; });
+  }
+</script>
+</body>
+</html>

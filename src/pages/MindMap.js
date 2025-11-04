@@ -13,10 +13,10 @@ const mindMapData = {
                 { label: "Java", color: "bg-indigo-600" },
                 { label: "JavaScript", color: "bg-indigo-600" },
                 { label: "HTML/CSS", color: "bg-indigo-500" },
-                { label: "Python", color: "bg-indigo-500" },
+                { label: "SQL", color: "bg-indigo-500" },
+                { label: "Python", color: "bg-indigo-400" },
                 { label: "C#", color: "bg-indigo-400" },
-                { label: "Vue.js", color: "bg-indigo-400" },
-                { label: "Django", color: "bg-indigo-300" }
+                { label: "React", color: "bg-indigo-300" }
             ]
         },
         {

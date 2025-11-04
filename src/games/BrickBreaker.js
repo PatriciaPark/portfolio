@@ -197,14 +197,6 @@ export default function BrickBreaker() {
 
     // 키보드 이벤트 핸들러
     const handleRestart = () => {
-        // GA 리스타트 추적
-        if (window.gtag) {
-            window.gtag('event', 'BB_game_restart', {
-                event_category: 'Game',
-                event_label: 'BrickBreaker'
-            });
-        }
-
         window.location.reload();
     }
     const keyDownHandler = (e) => {
@@ -239,14 +231,6 @@ export default function BrickBreaker() {
                 return;
             }
             if (gameClear) {
-                // GA 게임 클리어 추적
-                if (window.gtag) {
-                    window.gtag('event', 'BB_game_clear', {
-                        event_category: 'Game',
-                        event_label: 'BrickBreaker'
-                    });
-                }
-
                 // 클리어 메시지
                 drawEndMessage(ctx, "🎉 CLEAR!!");
                 cancelAnimationFrame(animationRef.current);
@@ -362,6 +346,17 @@ export default function BrickBreaker() {
             canvas.removeEventListener("touchstart", handleClick);
         };
     }, [gameOver, gameClear]);
+
+    // 페이지 진입 시 GA 이벤트 전송
+    useEffect(() => {
+        if (window.gtag) {
+        window.gtag('event', 'page_view', {
+            page_title: 'BrickBreaker',
+            page_location: window.location.href,
+            page_path: window.location.pathname
+        });
+        }
+    }, []);
 
     return (
         <div className="mt-8 flex flex-col items-center">

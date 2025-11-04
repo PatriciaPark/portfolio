@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function About() {
@@ -94,6 +94,17 @@ export default function About() {
     ],
   };
 
+  // 페이지 진입 시 GA 이벤트 전송
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'About',
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+    }
+  }, []);
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-12 text-gray-800 dark:text-gray-100">
       <h1 className="text-3xl font-bold mb-4">
@@ -101,7 +112,7 @@ export default function About() {
       </h1>
 
       <p className="mb-4">
-        👋 {language === "en" ? "Hello, I'm Youngjee Park." : "안녕하세요, 박영지입니다."}
+        👋 {language === "en" ? "Hello. Would you like to hear my story?" : "안녕하세요. 제 이야기 들어보실래요?"}
       </p>
 
       {paragraphs[language].map((para, i) => (
