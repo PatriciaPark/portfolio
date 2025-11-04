@@ -67,7 +67,7 @@ const tabContent = {
                 ko: "바닷속 침략자를 막아내는 수중 타워 디펜스 게임! React + PixiJS로 제작."
             },
             status: { en: "In Progress", ko: "작업중" },
-            link: ""
+            link: "/portfolio#/bgme"
         }
     ],
     brickGirl: [
