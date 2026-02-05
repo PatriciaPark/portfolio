@@ -4,6 +4,22 @@ import React, { useEffect } from "react";
 const projects = [
   {
     title: {
+      en: "World Book Ranking – World Books, One Place",
+      ko: "World Book Ranking – 한 곳에서 만나는 전 세계의 책들"
+    },
+    description: {
+      en: "A global book discovery mobile app that aggregates best-selling books by country, enabling users to explore reading trends across international markets.",
+      ko: "나라별 베스트셀러 데이터를 수집·정리하여 전 세계 독서 트렌드를 한 곳에서 탐색할 수 있는 글로벌 도서 발견 모바일 앱."
+    },
+    role: "Lead Frontend Developer & Code Integration",
+    tech: ["React Native", "React Navigation", "AdMob", "Amplitude", "Node.js", "Express", "Puppeteer", "Cheerio", "Google APIs"],
+    link: {
+      android: "https://play.google.com/store/apps/details?id=com.worldbookranking",
+      ios: "https://apps.apple.com/app/world-book-ranking/id6755462071"
+    }
+  },
+  {
+    title: {
       en: "JobPilot - AI-powered Job Application Automation Platform",
       ko: "JobPilot - AI 기반 취업 관리 플랫폼"
     },
@@ -217,16 +233,43 @@ export default function Projects() {
               </div>
             </div>
 
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 text-white text-sm py-3 px-4 rounded-b-xl flex items-center justify-between cursor-pointer hover:bg-gray-700 transition"
-              >
-                <span>{language === "en" ? "View More" : "더보기"}</span>
-                <span>➔</span>
-              </a>
+            {project.link && typeof project.link === 'object' ? (
+              <div className="flex border-t border-gray-200 dark:border-gray-700">
+                {project.link.android && (
+                  <a
+                    href={project.link.android}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-1/2 bg-gray-800 text-white text-sm py-3 px-4 flex items-center justify-between cursor-pointer hover:bg-gray-700 transition"
+                  >
+                    <span>{language === "en" ? "▶️ Google Play" : "▶️ 구글 플레이"}</span>
+                    <span>➔</span>
+                  </a>
+                )}
+                {project.link.ios && (
+                  <a
+                    href={project.link.ios}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-1/2 bg-gray-800 text-white text-sm py-3 px-4 flex items-center justify-between cursor-pointer hover:bg-gray-700 transition"
+                  >
+                    <span>{language === "en" ? "🍎 App Store" : "🍎 앱 스토어"}</span>
+                    <span>➔</span>
+                  </a>
+                )}
+              </div>
+            ) : (
+              project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-800 text-white text-sm py-3 px-4 rounded-b-xl flex items-center justify-between cursor-pointer hover:bg-gray-700 transition"
+                >
+                  <span>{language === "en" ? "View More" : "더보기"}</span>
+                  <span>➔</span>
+                </a>
+              )
             )}
           </div>
 
