@@ -29,7 +29,7 @@ const projects = [
     },
     role: "Full-Stack Developer (Solo)",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI", "Supabase", "Vercel"],
-    link: "https://jobpilotabc.com/"
+    link: "https://www.jobpilotabc.com/en/intro"
   },
   {
     title: {

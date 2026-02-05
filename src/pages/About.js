@@ -126,31 +126,32 @@ export default function About() {
         </h2>
         <ul className="space-y-2 text-sm text-left">
           <li>
-            <a
-              href="mailto:pyjee8@gmail.com"
+            ✉️ <a
+              href="https://ai-abc.pages.dev/"
               className="text-lime-400 hover:underline break-words"
+              target="_blank"
             >
-              ✉️ pyjee8@gmail.com
+               AI-ABC
             </a>
           </li>
           <li>
-            <a
+            🔗 <a
               href="https://www.linkedin.com/in/pyjee8/"
               className="text-indigo-400 hover:underline break-words"
               target="_blank"
               rel="noopener noreferrer"
             >
-              🔗 linkedin.com/in/pyjee8
+              LinkedIn
             </a>
           </li>
           <li>
-            <a
+            💻 <a
               href="https://github.com/PatriciaPark"
               className="text-amber-400 hover:underline break-words"
               target="_blank"
               rel="noopener noreferrer"
             >
-              💻 github.com/PatriciaPark
+              GitHub
             </a>
           </li>
         </ul>
